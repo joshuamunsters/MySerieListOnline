@@ -1,0 +1,30 @@
+C:\Users\joshu\source\repos\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\MySerieList.deps.json
+C:\Users\joshu\source\repos\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\MySerieList.runtimeconfig.json
+C:\Users\joshu\source\repos\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\MySerieList.runtimeconfig.dev.json
+C:\Users\joshu\source\repos\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\MySerieList.dll
+C:\Users\joshu\source\repos\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\MySerieList.pdb
+C:\Users\joshu\source\repos\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.csprojResolveAssemblyReference.cache
+C:\Users\joshu\source\repos\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.csproj.CoreCompileInputs.cache
+C:\Users\joshu\source\repos\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.AssemblyInfoInputs.cache
+C:\Users\joshu\source\repos\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.AssemblyInfo.cs
+C:\Users\joshu\source\repos\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.dll
+C:\Users\joshu\source\repos\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.pdb
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\MySerieList.deps.json
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\MySerieList.runtimeconfig.json
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\MySerieList.runtimeconfig.dev.json
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\MySerieList.dll
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\MySerieList.pdb
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.csprojResolveAssemblyReference.cache
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.csproj.CoreCompileInputs.cache
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.AssemblyInfoInputs.cache
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.AssemblyInfo.cs
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.dll
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\obj\Debug\netcoreapp1.0\MySerieList.pdb
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\DataLayer.dll
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\Interfaces.dll
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\LogicLayer.dll
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\Models.dll
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\DataLayer.pdb
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\Interfaces.pdb
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\LogicLayer.pdb
+D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\MySerieList\bin\Debug\netcoreapp1.0\Models.pdb

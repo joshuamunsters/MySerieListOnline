@@ -1,0 +1,114 @@
+﻿<!doctype html>
+
+<head>
+  
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    </head>
+
+   <script type="text/javascript" language="javascript">
+
+   $(document).ready(function () {
+       $("#searchbox").autocomplete({
+           source: function(request,response) {
+               $.ajax({
+                   url: "/Search/AutoComplete",
+                   type: "POST",
+                   dataType: "json",
+                   data: { Prefix: request.term },
+                   success: function (data) {
+                       response($.map(data, function (item) {
+                           return { label: item.name, value: item.name };
+                       }))
+
+                   }
+               })
+           },
+           messages: {
+               noResults: "", results: ""
+           }
+       });
+   })
+</script>
+
+
+@using Models
+@model SerieListViewModel
+
+<form asp-action="ListSearch" asp-controller="Search" role="search" method="post">
+
+    <div>
+        <h2>All Series</h2>
+    </div>
+
+    <div class="searchbox">
+        <input type="text" placeholder="Search.." name="searchbox" id="searchbox">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        @*<input asp-for="@Model.SearchedSerie.name" type="text" />
+            <a class="btn btn-primary" asp-controller="Serie" asp-action="ListSearch" asp-route-id="@">Go</a>*@
+
+
+
+
+    </div>
+    <div class="categories">
+        <h2>@Model.CurrentCategory</h2>
+
+        <!-- Example split danger button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger">Action</button>
+            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                @{
+                    foreach (var category in Model.Categories)
+                    {
+
+                        @*<a class="dropdown-item" href="#">@category.name</a>*@
+                        <li>
+
+                            <a asp-controller="Serie" asp-action="List"
+                               asp-route-category="@category.name">@category.name</a>
+                        </li>
+                    }
+
+
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="card-deck">
+            @{
+                foreach (var serie in Model.Series)
+                {
+
+
+                    <div class="card" style="width: 18rem; ">
+                        <img class="card-img-top" src="~/images/testbootstrap.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h4>Serie Name: @serie.name</h4>
+                            <p>Description: @serie.description</p>
+                            <a class="btn btn-primary" asp-controller="Serie" asp-action="Page" asp-route-id="@serie.id">Go</a>
+
+                        </div>
+                    </div>
+
+
+
+                }
+            }
+
+        </div>
+
+
+
+    </div>
+    </form>

@@ -1,0 +1,92 @@
+﻿@using Models
+
+@model SeriePageViewModel
+
+<form asp-action="Index" asp-controller="WatchList" method="post">
+    <div class="menu">
+        <ul>
+            <li><a href="#">Info</a></li>
+            <li><a href="#">Recommendations</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li> <button type="button" class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <input asp-for="@Model.WatchList.Serie.Id" value="@Model.SelectedSerie.id" readonly hidden/><br />
+                Name: <input asp-for="@Model.WatchList.Serie.Name" value="@Model.SelectedSerie.name" readonly /><br />
+                Status: <input type="text" asp-for="@Model.WatchList.Serie.Status" /> <br>
+                Episodes Seen: <input type="number" asp-for="@Model.WatchList.Serie.EpisodesSeen" /> <br>
+                Rating: <input type="number" asp-for="@Model.WatchList.Serie.Rating" min="1" max="5"/> <br>
+                <input type="number" asp-for="@Model.WatchList.Serie.UserId" readonly hidden /> <br>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </div>
+</div></li>
+
+        </ul>
+    </div>
+    </form>
+
+    <form asp-action="Page" asp-controller="Serie" asp-route-id="@Model.SendReview" method="post">
+
+
+
+
+        <div class="container">
+            <div class="image">
+                <img class="card-img-top" src="~/images/testbootstrap.png" alt="Card image cap">
+            </div>
+
+            <div class="serieinfo">
+                <h2>@Model.SelectedSerie.name</h2>
+                <p>Description: @Model.SelectedSerie.description</p>
+            </div>
+
+
+            <div class="review">
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Write a Review</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal2" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <input asp-for="@Model.SendReview.Serieid" value="@Model.SelectedSerie.id" hidden />
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Write a review</h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" asp-for="@Model.SendReview.Reviewtext" class="reviewtext"><br>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                                @*<a class="btn btn-primary" asp-controller="Serie" asp-action="Review" asp-route-id="@Model.SendReview">Go</a>*@
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </form>
+

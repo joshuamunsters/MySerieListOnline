@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <Compile Include="Models\WatchListSerie.cs" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.6" />
+    <PackageReference Include="MySql.Data" Version="8.0.13" />
+  </ItemGroup>
+
+</Project>

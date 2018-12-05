@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css"rel="stylesheet"/>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="Serie" asp-action="List">Series</a></li>
+            <li><a asp-controller="WatchList" asp-action="Index">Watchlist</a></li>
+            <li><a asp-controller="Register" asp-action="Register">Register</a></li>
+           
+        </ul>
+    </div>
+
+        <div>
+            @RenderBody()
+        </div>
+</body>
+</html>
