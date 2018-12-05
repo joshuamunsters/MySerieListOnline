@@ -15,12 +15,12 @@ namespace MySerieList.Controllers
 
         WatchListLogic watchListLogic = new WatchListLogic();
 
-        public ViewResult Index()
+        public ViewResult Index(int userid)
         {
 
             var watchListViewModel = new WatchListViewModel()
             {
-                Series = watchListLogic.GetSeries()
+                Series = watchListLogic.GetSeries(userid)
             };
           
             

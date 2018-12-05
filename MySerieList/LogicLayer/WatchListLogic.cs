@@ -20,9 +20,9 @@ namespace LogicLayer
 
         }
 
-        public List<WatchListSerie> GetSeries()
+        public List<WatchListSerie> GetSeries(int userid)
         {
-            return watchListRepository.GetSeries();
+            return watchListRepository.GetSeries(userid);
         }
 
 

@@ -5,7 +5,7 @@ namespace Interfaces
 {
     public interface IWatchListContext
     {
-        List<WatchListSerie> GetSeries();
+        List<WatchListSerie> GetSeries(int userid);
         void SendWatchListSerie(WatchListSerie watchListSerie);
     }
 }

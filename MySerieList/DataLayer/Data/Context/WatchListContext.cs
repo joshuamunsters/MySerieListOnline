@@ -36,15 +36,16 @@ namespace DataLayer
             }
         }
 
-        public List<WatchListSerie> GetSeries()
+        public List<WatchListSerie> GetSeries(int userid)
         {
             List<WatchListSerie> series = new List<WatchListSerie>();
-            string query = "SELECT id, name, status, episodesseen, rating, userid FROM WatchListSeries";
+            string query = "SELECT id, name, status, episodesseen, rating, userid FROM WatchListSeries WHERE userid = @userid";
             using (var conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
                 using (var cmd = new SqlCommand(query, conn))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@userid", userid));
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)

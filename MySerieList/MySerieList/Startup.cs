@@ -11,22 +11,18 @@ using Interfaces;
 using DataLayer;
 using Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace MySerieList
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -35,6 +31,11 @@ namespace MySerieList
             //services.AddTransient<ICategoryRepository, CategoryRepository>();
             //services.AddTransient<IReviewRepository, ReviewRepository>();
             // Add framework services.
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Account/Login";
+                });
             services.AddMvc();
            
                 
@@ -61,6 +62,11 @@ namespace MySerieList
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseCookiePolicy();
+            
+
+
 
             app.UseMvc(routes =>
             {

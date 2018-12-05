@@ -15,9 +15,9 @@ namespace DataLayer
             watchListContext.SendWatchListSerie(watchListSerie);
         }
 
-        public List<WatchListSerie> GetSeries()
+        public List<WatchListSerie> GetSeries(int userid)
         {
-          return  watchListContext.GetSeries();
+          return  watchListContext.GetSeries(userid);
         }
     }
 }
