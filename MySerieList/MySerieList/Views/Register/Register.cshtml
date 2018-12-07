@@ -1,7 +1,7 @@
 ﻿@model RegisterViewModel
 
 
-<h2>Registration</h2>
+@*<h2>Registration</h2>
 <form method="post" asp-controller="Register" asp-action="Register">
 
   
@@ -33,5 +33,46 @@
 
     <div><input type="submit" value="Register" /></div>
 
+
+
     
-</form>
+</form>*@
+
+<body class="text-center">
+    <form method="post" asp-controller="Login" asp-action="Login" class="form-signin">
+
+
+
+        <img class="mb-4" src="~/images/LogoSample_ByTailorBrands.jpg" alt="" width="120" height="120">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+        <div>
+            
+            <input asp-for="Username" class="form-control" placeholder="Username"/>
+            <span asp-validation-for="Username"></span>
+        </div><br />
+
+        <div>
+         
+            <input asp-for="Password"class="form-control" placeholder="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+
+        <div>
+           
+            <input asp-for="Password" class="form-control" placeholder="Password" />
+            <span asp-validation-for="Password"></span>
+        </div><br />
+
+        <div>
+           
+            <input asp-for="Email" class="form-control" placeholder="Email Adress" />
+            <span asp-validation-for="Email"></span>
+        </div> <br />
+
+
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+    </form>
+</body>

@@ -2,18 +2,79 @@
 
 @model WatchListViewModel
 
+<h2 style="text-align:center">My WatchList</h2><br />
+<h1 style="text-align:left">Status:</h1>
+<div class="legendatextred">
+    <p>Dropped=</p>
+</div>
+<div class="legendatextgreen">
+    <p>Watching=</p>
+</div>
+<div class="legendatextyellow">
+    <p>On-Hold=</p>
+</div>
+<div class="legendatextblue">
+    <p>Completed=</p>
+</div>
+<div class="legendatextgrey">
+    <p>Plan to Watch=</p>
+</div>
+<br />
 
+<div class="legenda">
+   
+    <div>
+        <div class='box red'></div>
+    </div>
 
+    <div>
+        <div class='box green'></div>
+    </div>
 
+    <div>
+        <div class='box yellow'></div>
+    </div>
 
+    <div>
+        <div class='box blue'></div>
+    </div>
 
+    <div>
+        <div class='box grey'></div>
+    </div>
+</div>
+
+<br /><br /><br />
+<h2>Series</h2>
     @{
         foreach (var serie in Model.Series)
         {
-            
-            <li class="list-group-item">@serie.Name</li>
+            if (serie.Status == "Completed")
+            {
 
+                 <li class="list-group-item list-group-item-info">@serie.Name</li>
+
+            }
+            else if (serie.Status == "Watching")
+            {
+
+                <li class="list-group-item list-group-item-success">@serie.Name</li>
+            }
+            else if (serie.Status == "Dropped")
+            {
+
+                <li class="list-group-item list-group-item-danger">@serie.Name</li>
+            }
+            else if (serie.Status == "On-Hold")
+            {
+
+                <li class="list-group-item list-group-item-warning">@serie.Name</li>
+            }
+            else if (serie.Status == "Plan to Watch")
+            {
+
+                <li class="list-group-item list-group-item-dark">@serie.Name</li>
+            }
 
         }
     }
-

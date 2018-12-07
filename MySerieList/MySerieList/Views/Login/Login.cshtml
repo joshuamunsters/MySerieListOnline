@@ -1,7 +1,7 @@
 ﻿
 @model LoginViewModel
 
-<h2>Login</h2>
+@*<h2>Login</h2>
 <form method="post" asp-controller="Login" asp-action="Login">
 
     <div asp-validation-summary="All"></div>
@@ -15,4 +15,23 @@
     <input asp-for="Password" class="form-control" type="password" />
 
     <div><input type="submit" value="Register" /></div>
-  </form>
+  </form>*@
+
+<body class="text-center">
+    <form method="post" asp-controller="Login" asp-action="Login" class="form-signin">
+
+      
+
+        <img class="mb-4" src="~/images/LogoSample_ByTailorBrands.jpg" alt="" width="120" height="120">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <input asp-for="Email" class="form-control" placeholder="Email address" />
+
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        
+    </form>
+</body>
+
