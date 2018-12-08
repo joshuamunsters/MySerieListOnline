@@ -13,5 +13,7 @@ namespace MySerieList.ViewModels
         public Review SendReview { get; set; } 
 
         public WatchListViewModel WatchList { get; set; }
+
+        public List<Episode> Episodes { get; set; }
     }
 }
