@@ -13,3 +13,18 @@ D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\LogicLayer\
 D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\DataLayer.pdb
 D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\Interfaces.pdb
 D:\SEMESTER 2 HERSTART\git repo myserlielist\MySerieList\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\Models.pdb
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\LogicLayer.deps.json
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\LogicLayer.dll
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\LogicLayer.pdb
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\DataLayer.dll
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\Interfaces.dll
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\Models.dll
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\DataLayer.pdb
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\Interfaces.pdb
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\bin\Debug\netcoreapp2.0\Models.pdb
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\obj\Debug\netcoreapp2.0\LogicLayer.csprojResolveAssemblyReference.cache
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\obj\Debug\netcoreapp2.0\LogicLayer.csproj.CoreCompileInputs.cache
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\obj\Debug\netcoreapp2.0\LogicLayer.AssemblyInfoInputs.cache
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\obj\Debug\netcoreapp2.0\LogicLayer.AssemblyInfo.cs
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\obj\Debug\netcoreapp2.0\LogicLayer.dll
+D:\SEMESTER 2 HERSTART\git myserielistonline\MySerieListOnline\MySerieList\LogicLayer\obj\Debug\netcoreapp2.0\LogicLayer.pdb
