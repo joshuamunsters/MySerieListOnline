@@ -46,5 +46,56 @@ namespace DataLayer
 
             }
         }
+
+        public void CreateRating(EpisodeRating rating)
+        {
+            string query = "INSERT INTO Episoderating([rating], [episodeid], [userid])" +
+                           "VALUES(@rating, @episodeid, @userid)";
+
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@rating", rating.Rating);
+                    cmd.Parameters.AddWithValue("@episodeid", rating.Episodeid);
+                    cmd.Parameters.AddWithValue("@userid", rating.Userid);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public EpisodeRating GetEpisodeRating(int epsiodeId)
+        {
+            string query = "SELECT id, rating, episodeid, userid FROM Episoderating WHERE episodeid= @episodeid";
+            EpisodeRating rating = new EpisodeRating();
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@episodeid", epsiodeId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            rating = new EpisodeRating
+                            {
+                                Id = (int)reader["id"],
+                                Rating = (int)reader["rating"],
+                                Episodeid = epsiodeId,
+                                Userid = (int)reader["userid"]
+
+                            };
+                        }
+
+                        return rating;
+                    }
+                }
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 @using Models
 @model EpisodeViewModel
 
+
     <div class="container">
         <h1 class="my-4">
             Series
@@ -9,29 +10,41 @@
         </h1>
         <div class="container">
             <div class="card-deck">
-                @{
+                @if (User.Identity.IsAuthenticated)
+                {
+                    var identity = (System.Security.Claims.ClaimsIdentity)Context.User.Identity;
+                    int id = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "id").Value);
                     foreach (var episode in Model.Episodes)
                     {
+                        
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <a href="#">
+                                        <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+                                    </a>
+                                </div>
+                                <div class="col-md-5">
+                                    <h3>@episode.Name</h3>
+                                    <p>@episode.Description</p>
+                                    @*<p asp-controller="Episode" asp-action="Episode" asp-route-serieid="@episode.Serieid" asp-route-episodeId="@episode.Id">You gave this episode a @Model.GetEpisodeRating.Rating/10</p>*@
 
-
-                        <div class="row">
-                            <div class="col-md-7">
-                                <a href="#">
-                                    <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-                                </a>
+    
+                                    <a  asp-controller="EpisodeRating" asp-action="EpisodeRating"  asp-route-episodeId="@episode.Id" asp-route-serieid="@episode.Serieid">Rating</a>
+                                   
+                                </div>
                             </div>
-                            <div class="col-md-5">
-                                <h3>@episode.Name</h3>
-                                <p>@episode.Description</p>
-                                <a class="btn btn-primary" >Go</a>
-                            </div>
-                        </div>
                             <hr>
-
+                          
                     }
+
                 }
 
-            </div>
+                
+                   
+
+
+
+</div>
         </div>
         <ul class="pagination justify-content-center">
             <li class="page-item">
@@ -72,4 +85,3 @@
 
 
 
-           

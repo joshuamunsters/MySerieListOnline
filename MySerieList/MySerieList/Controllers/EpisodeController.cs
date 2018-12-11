@@ -15,16 +15,18 @@ namespace MySerieList.Controllers
         // GET: /<controller>/
         EpisodeLogic episodeLogic = new EpisodeLogic();
 
-        public ViewResult Episode(int serieid)
+        public ViewResult Episode(int serieid, int episodeId)
         {
 
             var vm = new EpisodeViewModel()
             {
-                Episodes = episodeLogic.GetEpisodeBySerieId(serieid)
+                Episodes = episodeLogic.GetEpisodeBySerieId(serieid),
             };
 
 
             return View(vm);
         }
+
+       
     }
 }

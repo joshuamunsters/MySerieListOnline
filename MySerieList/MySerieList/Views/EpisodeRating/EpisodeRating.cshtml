@@ -1,0 +1,13 @@
+﻿@model EpisodeRatingViewModel
+
+<form asp-action="EpisodeRating" asp-controller="EpisodeRating" asp-route-vm="@Model.GetEpisodeRating" asp-route-serieid="@Model.Serieid" asp-route-episodeId="@Model.GetEpisodeRating.Episodeid" method="post">
+
+    <h2>@Model.GetEpisodeRating.Rating</h2>
+
+    
+    <input asp-for="CreateRating.Rating" class="form-control" min="1" max="10" placeholder="Give Rating" />
+   
+    <input asp-for="CreateRating.Userid" value="@Model.GetEpisodeRating.Userid" class="form-control" type="hidden" />
+    <input asp-for="CreateRating.Episodeid" value="@Model.GetEpisodeRating.Episodeid" class="form-control" type="hidden" />
+    <input type="submit" value="Create" class="btn btn-primary" />
+    </form>

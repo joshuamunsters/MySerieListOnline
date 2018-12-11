@@ -4008,11 +4008,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Models\\Models.csproj",
+      "projectUniqueName": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Models\\Models.csproj",
+      "projectPath": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Models\\Models.csproj",
       "packagesPath": "C:\\Users\\joshu\\.nuget\\packages\\",
-      "outputPath": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Models\\obj\\",
+      "outputPath": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

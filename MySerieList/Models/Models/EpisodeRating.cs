@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Models
 {
-    class EpisodeRating
+    public class EpisodeRating
     {
         public int Id { get; set; }
 

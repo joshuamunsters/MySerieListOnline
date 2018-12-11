@@ -14,5 +14,15 @@ namespace LogicLayer
         {
             return episodeRepository.GetEpisodeBySerieId(serieid);
         }
+
+        public void CreateRating(EpisodeRating rating)
+        {
+            episodeRepository.CreateRating(rating);
+        }
+
+        public EpisodeRating GetEpisodeRating(int episodeId)
+        {
+            return episodeRepository.GetEpisodeRating(episodeId);
+        }
     }
 }

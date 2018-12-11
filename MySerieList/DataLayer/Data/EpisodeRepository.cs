@@ -14,5 +14,15 @@ namespace DataLayer
         {
            return episodeContext.GetEpisodeBySerieId(serieid);
         }
+
+        public void CreateRating(EpisodeRating rating)
+        {
+            episodeContext.CreateRating(rating);
+        }
+
+        public EpisodeRating GetEpisodeRating(int episodeId)
+        {
+            return episodeContext.GetEpisodeRating(episodeId);
+        }
     }
 }

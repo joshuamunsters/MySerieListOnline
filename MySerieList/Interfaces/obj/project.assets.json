@@ -4027,11 +4027,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Interfaces\\Interfaces.csproj",
+      "projectUniqueName": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Interfaces\\Interfaces.csproj",
       "projectName": "Interfaces",
-      "projectPath": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Interfaces\\Interfaces.csproj",
+      "projectPath": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Interfaces\\Interfaces.csproj",
       "packagesPath": "C:\\Users\\joshu\\.nuget\\packages\\",
-      "outputPath": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Interfaces\\obj\\",
+      "outputPath": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Interfaces\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4050,8 +4050,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Models\\Models.csproj": {
-              "projectPath": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Models\\Models.csproj"
+            "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Models\\Models.csproj": {
+              "projectPath": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Models\\Models.csproj"
             }
           }
         }

@@ -12900,11 +12900,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\DataLayer\\DataLayer.csproj",
+      "projectUniqueName": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\DataLayer\\DataLayer.csproj",
       "projectName": "DataLayer",
-      "projectPath": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\DataLayer\\DataLayer.csproj",
+      "projectPath": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\DataLayer\\DataLayer.csproj",
       "packagesPath": "C:\\Users\\joshu\\.nuget\\packages\\",
-      "outputPath": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\DataLayer\\obj\\",
+      "outputPath": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\DataLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12923,11 +12923,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Models\\Models.csproj": {
-              "projectPath": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Models\\Models.csproj"
+            "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Models\\Models.csproj": {
+              "projectPath": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Models\\Models.csproj"
             },
-            "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Interfaces\\Interfaces.csproj": {
-              "projectPath": "D:\\SEMESTER 2 HERSTART\\git myserielistonline\\MySerieListOnline\\MySerieList\\Interfaces\\Interfaces.csproj"
+            "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Interfaces\\Interfaces.csproj": {
+              "projectPath": "D:\\SEMESTER 2 HERSTART\\git repo myserlielist\\MySerieList\\MySerieList\\Interfaces\\Interfaces.csproj"
             }
           }
         }

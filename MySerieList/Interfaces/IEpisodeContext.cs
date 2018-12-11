@@ -6,5 +6,9 @@ namespace Interfaces
     public interface IEpisodeContext
     {
         List<Episode> GetEpisodeBySerieId(int serieid);
+
+        void CreateRating(EpisodeRating rating);
+
+        EpisodeRating GetEpisodeRating(int episodeId);
     }
 }
