@@ -72,6 +72,37 @@ namespace DataLayer
             }
         }
 
+        public List<Serie> GetMostPopularSeries()
+        {
+            string query = "SELECT  TOP 4 a.serieid, b.[name], b.[description], b.overallrating, COUNT(serieid) AS MOST_FREQUENT from WatchListSeries AS a INNER JOIN Serie AS b ON b.id = a.serieid GROUP BY serieid, b.[name], b.[description], b.overallrating ORDER BY COUNT(serieid) desc ";
+            List<Serie> series = new List<Serie>();
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Serie serie = new Serie()
+                            {
+                                id = (int)reader["serieid"],
+                                name = (string)reader["name"],
+                                description = (string)reader["description"],
+                                overallrating = (string)reader["overallrating"]
+
+                            };
+                            series.Add(serie);
+                        }
+
+                        return series;
+                    }
+                }
+            }
+        }
+
 
     }
 }

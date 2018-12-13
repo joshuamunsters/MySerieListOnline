@@ -9,6 +9,8 @@ namespace Interfaces
 
         void CreateRating(EpisodeRating rating);
 
-        EpisodeRating GetEpisodeRating(int episodeId);
+        EpisodeRating GetEpisodeRating(int episodeId, int userid);
+
+        List<EpisodeRating> GetEpisodeRatingsBySerieId(int serieid, int userid);
     }
 }

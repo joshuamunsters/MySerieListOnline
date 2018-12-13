@@ -1,13 +1,96 @@
 ﻿@model EpisodeRatingViewModel
 
-<form asp-action="EpisodeRating" asp-controller="EpisodeRating" asp-route-vm="@Model.GetEpisodeRating" asp-route-serieid="@Model.Serieid" asp-route-episodeId="@Model.GetEpisodeRating.Episodeid" method="post">
+@*@foreach(var rating in Model.RatingChart)
+    {
+        <h2>@rating.Episodeid</h2>
+        <p>@rating.Rating</p>
 
-    <h2>@Model.GetEpisodeRating.Rating</h2>
 
+    }
+
+    <form asp-action="CreateRating" asp-controller="EpisodeRating" method="post">
+
+        <h2>@Model.GetEpisodeRating.Rating</h2>
+
+
+        <input asp-for="CreateRating.Rating" class="form-control" min="1" max="10" placeholder="Give Rating" />
+
+        <input asp-for="CreateRating.Userid" value="@Model.GetEpisodeRating.Userid" class="form-control" type="hidden" />
+        <input asp-for="CreateRating.Episodeid" value="@Model.GetEpisodeRating.Episodeid" class="form-control" type="hidden" />
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </form>*@
+
+<head>
+    <script src="~/js/Chart.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+
+        #chart-container {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ddd;
+            padding: 1px;
+            border-radius: 4px;
+        }
+
+    </style>
     
+</head>
+
+
+<body>
+
+    <div id="chart-container">
+        <canvas id="bar_chart"></canvas>
+    </div>
+
+<form asp-action="CreateRating" asp-controller="EpisodeRating" asp-route-serieid="@Model.SerieId" method="post">
+
+    <h2>You gave this episode a @Model.GetEpisodeRating.Rating</h2>
+
+
     <input asp-for="CreateRating.Rating" class="form-control" min="1" max="10" placeholder="Give Rating" />
-   
+
     <input asp-for="CreateRating.Userid" value="@Model.GetEpisodeRating.Userid" class="form-control" type="hidden" />
     <input asp-for="CreateRating.Episodeid" value="@Model.GetEpisodeRating.Episodeid" class="form-control" type="hidden" />
+
     <input type="submit" value="Create" class="btn btn-primary" />
-    </form>
+</form>
+
+    <script>
+
+    var ratings = @Html.Raw(Json.Serialize(ViewBag.Ratings));
+    var episodes = @Html.Raw(Json.Serialize(ViewBag.Episodes));
+
+    var ctx = $("#bar_chart");
+    var bacChart = new Chart(ctx, {
+
+        type: 'line',
+        data: {
+            labels: episodes,
+            datasets: [{
+                label: "EpisodeRating",
+                data: ratings,
+                backgroundColor: ["rgba(242,166,54,.5)"],
+                borderColor: ["rgba(242,166,54,.5)"],
+                borderWidth:1
+
+            }]
+
+        },
+
+        options: {
+            maintainAspectRatio: false,
+            scales: { xAxes: [{ ticks: { beginAtZero: true } }] },
+            legend: { display: false },
+
+
+        },
+
+
+    });
+
+    </script>
+
+
+</body>

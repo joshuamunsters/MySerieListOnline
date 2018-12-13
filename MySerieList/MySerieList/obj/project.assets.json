@@ -2,6 +2,9 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "Chart.js/2.7.3": {
+        "type": "package"
+      },
       "Google.Protobuf/3.5.1": {
         "type": "package",
         "dependencies": {
@@ -4874,6 +4877,18 @@
     }
   },
   "libraries": {
+    "Chart.js/2.7.3": {
+      "sha512": "U96z+RQRbjoY7OSCgIHYd+kyPBgyijTF+eYf/Q0Cu2Zk5Kmt8WfPNa2PaCQ9wAvjCIDly03O82ClaDu5Iz8hkg==",
+      "type": "package",
+      "path": "chart.js/2.7.3",
+      "files": [
+        ".signature.p7s",
+        "chart.js.2.7.3.nupkg.sha512",
+        "chart.js.nuspec",
+        "content/Scripts/Chart.js",
+        "content/Scripts/Chart.min.js"
+      ]
+    },
     "Google.Protobuf/3.5.1": {
       "sha512": "j/gbpRZ68sgvdi/vXI39Cj/jWG4d1dtDqfWbkjC9dErNWu/dFcIlq1LIgLscea+llZ6nzm06wz/JGziOegAL7Q==",
       "type": "package",
@@ -12923,6 +12938,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "Chart.js >= 2.7.3",
       "DataLayer >= 1.0.0",
       "Interfaces >= 1.0.0",
       "LogicLayer >= 1.0.0",
@@ -12988,6 +13004,10 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "Chart.js": {
+            "target": "Package",
+            "version": "2.7.3"
+          },
           "Microsoft.NETCore.App": {
             "target": "Package",
             "version": "2.0",

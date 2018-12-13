@@ -1,4 +1,4 @@
-﻿
+﻿@model WatchListViewModel
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +16,16 @@
 </head>
 
 <body>
-    <br />
+ 
+    @{
+        var serie1 = Model.MostPopularSeries.FirstOrDefault();
+        var serie2 = Model.MostPopularSeries.ElementAt(1);
+        var serie3 = Model.MostPopularSeries.ElementAt(2);
+        var serie4 = Model.MostPopularSeries.ElementAt(3);
+
+    }
+    <h1>Welcome to MySerieList</h1>
+   
     <!-- Navigation -->
    
     <!-- Page Content -->
@@ -29,26 +38,26 @@
             </div>
             <!-- /.col-lg-8 -->
             <div class="col-lg-4">
-                <h1>MySerieList</h1>
-                <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
-                <a class="btn btn-primary btn-lg" href="#">Call to Action!</a>
+                <h1>The most popular serie on MySerieList is: @serie1.name</h1>
+                <p>@serie1.description</p>
+                <a class="btn btn-danger navbar-btn" href="#">Go to serie page!</a>
             </div>
             <!-- /.col-md-4 -->
         </div><br /><br />
         <!-- /.row -->
         <!-- Call to Action Well -->
        
-        <h1>Top Series</h1>
+        <h1>Most popular series</h1>
         <!-- Content Row -->
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">Card One</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                        <h2 class="card-title">@serie2.name</h2>
+                        <p class="card-text">@serie2.description</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">More Info</a>
+                        <a href="#" class="btn btn-danger navbar-btn">Go to serie page!</a>
                     </div>
                 </div>
             </div>
@@ -56,11 +65,11 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">Card Two</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                        <h2 class="card-title">@serie3.name</h2>
+                        <p class="card-text">@serie3.description</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">More Info</a>
+                        <a href="#" class="btn btn-danger navbar-btn">Go to serie page!</a>
                     </div>
                 </div>
             </div>
@@ -68,11 +77,11 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">Card Three</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                        <h2 class="card-title">@serie4.name</h2>
+                        <p class="card-text">@serie4.description</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">More Info</a>
+                        <a href="#" class="btn btn-danger navbar-btn">Go to serie page!</a>
                     </div>
                 </div>
             </div>

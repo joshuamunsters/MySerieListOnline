@@ -7,5 +7,7 @@ namespace Interfaces
     {
         List<WatchListSerie> GetSeries(int userid);
         void SendWatchListSerie(WatchListSerie watchListSerie);
+
+        List<Serie> GetMostPopularSeries();
     }
 }

@@ -46,11 +46,15 @@ namespace DataLayer
 
             }
         }
+        string query = "INSERT INTO Episoderating([rating], [episodeid], [userid])" +
+                          "VALUES(@rating, @episodeid, @userid)";
+
 
         public void CreateRating(EpisodeRating rating)
         {
-            string query = "INSERT INTO Episoderating([rating], [episodeid], [userid])" +
-                           "VALUES(@rating, @episodeid, @userid)";
+            string query = "UPDATE Episoderating SET rating=@rating WHERE episodeid=@episodeid";
+                            
+                           
 
             using (var conn = new SqlConnection(ConnectionString))
             {
@@ -60,16 +64,16 @@ namespace DataLayer
 
                     cmd.Parameters.AddWithValue("@rating", rating.Rating);
                     cmd.Parameters.AddWithValue("@episodeid", rating.Episodeid);
-                    cmd.Parameters.AddWithValue("@userid", rating.Userid);
+                    //cmd.Parameters.AddWithValue("@userid", rating.Userid);
 
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public EpisodeRating GetEpisodeRating(int epsiodeId)
+        public EpisodeRating GetEpisodeRating(int epsiodeId, int userid)
         {
-            string query = "SELECT id, rating, episodeid, userid FROM Episoderating WHERE episodeid= @episodeid";
+            string query = "SELECT id, rating, episodeid, userid FROM Episoderating WHERE episodeid= @episodeid AND userid= @userid";
             EpisodeRating rating = new EpisodeRating();
             using (var conn = new SqlConnection(ConnectionString))
             {
@@ -77,6 +81,7 @@ namespace DataLayer
                 {
                     conn.Open();
                     cmd.Parameters.AddWithValue("@episodeid", epsiodeId);
+                    cmd.Parameters.AddWithValue("@userid", userid);
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -86,8 +91,8 @@ namespace DataLayer
                             {
                                 Id = (int)reader["id"],
                                 Rating = (int)reader["rating"],
-                                Episodeid = epsiodeId,
-                                Userid = (int)reader["userid"]
+                                Episodeid = (int)reader["episodeid"],
+                                Userid = (int)reader["userid"],
 
                             };
                         }
@@ -95,6 +100,44 @@ namespace DataLayer
                         return rating;
                     }
                 }
+            }
+        }
+
+        public List<EpisodeRating> GetEpisodeRatingsBySerieId(int serieid, int userid)
+        {
+            List<EpisodeRating> ratings = new List<EpisodeRating>();
+            string query = "SELECT * FROM Serie AS a INNER JOIN Episode AS b ON a.id = b.serieid INNER JOIN Episoderating AS c ON b.id = c.episodeid WHERE serieid = @serieid AND userid = @userid";
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.Add(new SqlParameter("@serieid", serieid));
+                    cmd.Parameters.Add(new SqlParameter("@userid", userid));
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                EpisodeRating rating = new EpisodeRating
+                                {
+                                    Id = (int)reader["id"],
+                                    Rating = (int)reader["rating"],
+                                    Episodeid = (int)reader["episodeid"],
+                                    Userid = (int)reader["userid"]
+
+
+                                };
+                                ratings.Add(rating);
+                            }
+                        }
+                    }
+                }
+                return ratings;
+
+
+
             }
         }
     }

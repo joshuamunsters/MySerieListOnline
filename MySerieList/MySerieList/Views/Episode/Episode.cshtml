@@ -29,7 +29,7 @@
                                     @*<p asp-controller="Episode" asp-action="Episode" asp-route-serieid="@episode.Serieid" asp-route-episodeId="@episode.Id">You gave this episode a @Model.GetEpisodeRating.Rating/10</p>*@
 
     
-                                    <a  asp-controller="EpisodeRating" asp-action="EpisodeRating"  asp-route-episodeId="@episode.Id" asp-route-serieid="@episode.Serieid">Rating</a>
+                                    <a  asp-controller="EpisodeRating" asp-action="EpisodeRating"  asp-route-episodeId="@episode.Id" asp-route-serieid="@episode.Serieid" asp-route-userid="@id" >Rating</a>
                                    
                                 </div>
                             </div>

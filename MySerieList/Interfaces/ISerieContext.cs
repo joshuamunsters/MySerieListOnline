@@ -9,6 +9,5 @@ namespace Interfaces
         List<Serie> GetAllSeriesByCategory(int categoryid);
         Serie GetSerieById(int id);
 
-        Serie GetSerieByName(string name);
     }
 }

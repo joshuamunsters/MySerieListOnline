@@ -25,6 +25,10 @@ namespace LogicLayer
             return watchListRepository.GetSeries(userid);
         }
 
+        public List<Serie> GetMostPopularSeries()
+        {
+            return watchListRepository.GetMostPopularSeries();
+        }
 
 
 

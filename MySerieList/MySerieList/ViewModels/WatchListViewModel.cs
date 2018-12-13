@@ -11,5 +11,7 @@ namespace MySerieList.ViewModels
         public List<WatchListSerie> Series { get; set; }
 
         public WatchListSerie Serie { get; set; }
+
+        public List<Serie> MostPopularSeries { get; set; }
     }
 }

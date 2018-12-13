@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "4eb6e7c24bc72001e285a6a893b2fd458f7044e9"
+    "signature": "d779cd2d07020abd17864e8133f5bf9b9ba8d970"
   },
   "compilationOptions": {
     "defines": [
@@ -23,6 +23,7 @@
     ".NETCoreApp,Version=v2.0": {
       "MySerieList/1.0.0": {
         "dependencies": {
+          "Chart.js": "2.7.3",
           "DataLayer": "1.0.0",
           "Interfaces": "1.0.0",
           "LogicLayer": "1.0.0",
@@ -37,6 +38,7 @@
           "MySerieList.dll": {}
         }
       },
+      "Chart.js/2.7.3": {},
       "Google.Protobuf/3.5.1": {
         "dependencies": {
           "NETStandard.Library": "2.0.0"
@@ -4092,6 +4094,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Chart.js/2.7.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U96z+RQRbjoY7OSCgIHYd+kyPBgyijTF+eYf/Q0Cu2Zk5Kmt8WfPNa2PaCQ9wAvjCIDly03O82ClaDu5Iz8hkg==",
+      "path": "chart.js/2.7.3",
+      "hashPath": "chart.js.2.7.3.nupkg.sha512"
     },
     "Google.Protobuf/3.5.1": {
       "type": "package",

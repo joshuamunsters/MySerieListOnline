@@ -113,36 +113,7 @@ namespace DataLayer
             }
         }
 
-        public Serie GetSerieByName(string name)
-        {
-            string query = "SELECT id, name, description, overallrating FROM Serie WHERE name= @Name";
-            var serie = new Serie();
-            using (var conn = new SqlConnection(ConnectionString))
-            {
-                using (var cmd = new SqlCommand(query, conn))
-                {
-                    conn.Open();
-                    cmd.Parameters.AddWithValue("@Name", name);
-
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            serie = new Serie()
-                            {
-                                id = (int)reader["id"],
-                                name = name,
-                                description = (string)reader["description"],
-                                overallrating = (string)reader["overallrating"]
-
-                            };
-                        }
-
-                        return serie;
-                    }
-                }
-            }
-        }
+        
 
 
 

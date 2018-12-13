@@ -8,9 +8,13 @@ namespace MySerieList.ViewModels
 {
     public class EpisodeRatingViewModel
     {
-        public int Serieid { get; set; }
+   
+        public int SerieId { get; set; }
         public EpisodeRating CreateRating { get; set; }
 
         public EpisodeRating GetEpisodeRating { get; set; } 
+
+
+        public List<EpisodeRating> RatingChart { get; set; }
     }
 }

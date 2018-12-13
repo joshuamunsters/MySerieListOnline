@@ -15,28 +15,38 @@ namespace MySerieList.Controllers
     {
 
         EpisodeLogic episodeLogic = new EpisodeLogic();
-        public IActionResult EpisodeRating(int episodeId, int serieid)
+        public IActionResult EpisodeRating(int episodeId,  int userid, int serieid)
         {
-            EpisodeRatingViewModel vm = new EpisodeRatingViewModel
-            {
-                GetEpisodeRating = episodeLogic.GetEpisodeRating(episodeId),
-                Serieid = serieid
+            EpisodeRatingViewModel vm = new EpisodeRatingViewModel();
+            vm.SerieId = serieid;
+            vm.GetEpisodeRating = episodeLogic.GetEpisodeRating(episodeId, userid);
+            vm.RatingChart = episodeLogic.GetEpisodeRatingsBySerieId(serieid, userid);
+
+           
+
+            var ratings = vm.RatingChart.Select(x => x.Rating).Distinct();
+            var episodes = vm.RatingChart.OrderBy(x => x.Episodeid).Distinct().Select( x => x.Episodeid);
+
+            ViewBag.Ratings = ratings;
+            ViewBag.Episodes = episodes;
+            
 
 
-            };
-  
+
+
+
             return View(vm);
         }
 
         [HttpPost]
-        public IActionResult EpisodeRating(EpisodeRatingViewModel vm, int serieid, int episodeId)
+        public IActionResult CreateRating(EpisodeRatingViewModel vm, int serieid)
         {
 
             episodeLogic.CreateRating(vm.CreateRating);
 
 
 
-            return RedirectToAction("EpisodeRating", "EpisodeRating", new { episodeId = episodeId });
+            return RedirectToAction("EpisodeRating", "EpisodeRating", new { episodeId = vm.CreateRating.Episodeid, userid = vm.CreateRating.Userid, serieid = serieid });
         }
     }
 }

@@ -28,9 +28,6 @@ namespace DataLayer
            return _serieContext.GetSerieById(id);
         }
 
-        public Serie GetSerieByName(string name)
-        {
-           return _serieContext.GetSerieByName(name);
-        }
+       
     }
 }

@@ -19,5 +19,10 @@ namespace DataLayer
         {
           return  watchListContext.GetSeries(userid);
         }
+
+        public List<Serie> GetMostPopularSeries()
+        {
+            return watchListContext.GetMostPopularSeries();
+        }
     }
 }

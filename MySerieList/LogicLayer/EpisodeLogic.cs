@@ -20,9 +20,14 @@ namespace LogicLayer
             episodeRepository.CreateRating(rating);
         }
 
-        public EpisodeRating GetEpisodeRating(int episodeId)
+        public EpisodeRating GetEpisodeRating(int episodeId, int userid)
         {
-            return episodeRepository.GetEpisodeRating(episodeId);
+            return episodeRepository.GetEpisodeRating(episodeId, userid);
+        }
+
+        public List<EpisodeRating> GetEpisodeRatingsBySerieId(int serieid, int userid)
+        {
+            return episodeRepository.GetEpisodeRatingsBySerieId(serieid, userid);
         }
     }
 }
