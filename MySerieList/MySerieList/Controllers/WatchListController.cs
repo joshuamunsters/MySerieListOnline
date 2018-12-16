@@ -33,7 +33,7 @@ namespace MySerieList.Controllers
             watchListLogic.AddToWatchList(viewModel.WatchList.Serie);
 
 
-            return RedirectToAction("Index", "WatchList");
+            return RedirectToAction("Index", "WatchList", new { userid = viewModel.WatchList.Serie.UserId });
         }
 
 

@@ -13,8 +13,8 @@ namespace DataLayer
 
         public void SendWatchListSerie(WatchListSerie watchListSerie)
         {
-            string query = "INSERT INTO WatchListSeries([id], [name], [status], [episodesseen], [rating], [userid])" +
-                           "VALUES(@id, @name, @status, @episodesseen, @rating, @userid)";
+            string query = "INSERT INTO WatchListSeries([serieid], [name], [status], [episodesseen], [rating], [userid])" +
+                           "VALUES(@serieid, @name, @status, @episodesseen, @rating, @userid)";
 
             using (var conn = new SqlConnection(ConnectionString))
             {
@@ -22,7 +22,7 @@ namespace DataLayer
                 {
                     conn.Open();
 
-                    cmd.Parameters.AddWithValue("@id", watchListSerie.Id);
+                    cmd.Parameters.AddWithValue("@serieid", watchListSerie.SerieId);
                     cmd.Parameters.AddWithValue("@name", watchListSerie.Name);
                     cmd.Parameters.AddWithValue("@status", watchListSerie.Status);
                     cmd.Parameters.AddWithValue("@episodesseen", watchListSerie.EpisodesSeen);

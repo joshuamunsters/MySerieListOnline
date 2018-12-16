@@ -1,0 +1,1 @@
+﻿SELECT * FROM Serie AS a INNER JOIN Recommendation AS b ON a.id = b.serieid1 

@@ -15,5 +15,10 @@ namespace DataLayer
             _reviewContext.SendReview(review);
         }
 
+        public List<Review> GetReviewBySerie(int serieid)
+        {
+            return _reviewContext.GetReviewBySerie(serieid);
+        }
+
     }
 }

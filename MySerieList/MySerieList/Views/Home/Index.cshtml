@@ -18,10 +18,10 @@
 <body>
  
     @{
-        var serie1 = Model.MostPopularSeries.FirstOrDefault();
-        var serie2 = Model.MostPopularSeries.ElementAt(1);
-        var serie3 = Model.MostPopularSeries.ElementAt(2);
-        var serie4 = Model.MostPopularSeries.ElementAt(3);
+//var serie1 = Model.MostPopularSeries.FirstOrDefault();
+//var serie2 = Model.MostPopularSeries.ElementAt(1);
+//var serie3 = Model.MostPopularSeries.ElementAt(2);
+//var serie4 = Model.MostPopularSeries.ElementAt(3);
 
     }
     <h1>Welcome to MySerieList</h1>
@@ -34,22 +34,35 @@
         <!-- Heading Row -->
         <div class="row my-4">
             <div class="col-lg-8">
+                
                 <img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">
             </div>
             <!-- /.col-lg-8 -->
+        @try
+        {
+            var serie1 = Model.MostPopularSeries.FirstOrDefault();
             <div class="col-lg-4">
                 <h1>The most popular serie on MySerieList is: @serie1.name</h1>
                 <p>@serie1.description</p>
                 <a class="btn btn-danger navbar-btn" href="#">Go to serie page!</a>
             </div>
+        }
+        catch
+        {
+            <p>None...Actually. An admin has managed to delete every serie from our system. If you see this you have witnessed something very rare, congratulations. Dont worry it will be fixed!</p>
+        }
             <!-- /.col-md-4 -->
         </div><br /><br />
         <!-- /.row -->
         <!-- Call to Action Well -->
        
-        <h1>Most popular series</h1>
+        
         <!-- Content Row -->
         <div class="row">
+            @try
+            {
+                var serie2 = Model.MostPopularSeries.ElementAt(1);
+                <h1>Most popular series</h1>
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
@@ -61,7 +74,12 @@
                     </div>
                 </div>
             </div>
+            }
+            catch { }
             <!-- /.col-md-4 -->
+            @try
+            {
+                var serie3 = Model.MostPopularSeries.ElementAt(2);
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
@@ -73,7 +91,12 @@
                     </div>
                 </div>
             </div>
+            }
+            catch { }
             <!-- /.col-md-4 -->
+            @try
+            {
+                var serie4 = Model.MostPopularSeries.ElementAt(3);
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
@@ -86,6 +109,8 @@
                 </div>
             </div>
             <!-- /.col-md-4 -->
+            }
+            catch { }
 
         </div>
         <!-- /.row -->

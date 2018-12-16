@@ -68,5 +68,9 @@ namespace LogicLayer
             return allseries;
         }
 
+        public void DeleteSerie(int id)
+        {
+            serieRepository.DeleteSerie(id);
+        }
     }
 }

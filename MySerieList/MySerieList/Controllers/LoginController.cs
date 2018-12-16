@@ -54,6 +54,7 @@ namespace MySerieList.Controllers
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim("roleid", user.Roleid.ToString()),
+                new Claim("email", user.Email),
             };
 
             var claimsIdentity = new ClaimsIdentity(claims,

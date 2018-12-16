@@ -17,6 +17,7 @@ namespace Models
 
         public int UserId { get; set; }
 
+        public int SerieId { get; set; }
        
 
 

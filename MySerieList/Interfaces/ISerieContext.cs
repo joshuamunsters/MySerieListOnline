@@ -8,6 +8,6 @@ namespace Interfaces
         List<Serie> GetAllSeries();
         List<Serie> GetAllSeriesByCategory(int categoryid);
         Serie GetSerieById(int id);
-
+        void DeleteSerie(int id);
     }
 }

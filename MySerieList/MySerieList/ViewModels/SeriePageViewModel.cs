@@ -10,10 +10,14 @@ namespace MySerieList.ViewModels
     {
         public Serie SelectedSerie { get; set; }
 
-        public Review SendReview { get; set; } 
+        public Review SendReview { get; set; }
+
+        public List<Review> Reviews { get; set; }
 
         public WatchListViewModel WatchList { get; set; }
 
         public List<Episode> Episodes { get; set; }
+
+        
     }
 }

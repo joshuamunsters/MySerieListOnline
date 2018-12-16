@@ -98,7 +98,17 @@
                                 <div class="col-md-5">
                                     <h3>@serie.name</h3>
                                     <p>@serie.description</p>
-                                    <a class="btn btn-primary" asp-controller="Serie" asp-action="Page" asp-route-id="@serie.id">Go</a>
+                                    <a class="btn btn-success" asp-controller="Serie" asp-action="Page" asp-route-id="@serie.id">Go</a>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        var identity = (System.Security.Claims.ClaimsIdentity)Context.User.Identity;
+                                        int roleid = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "roleid").Value);
+                                        if (@roleid == 2)
+                                        {
+                                            <a class="btn btn-danger" asp-controller="Serie" asp-action="DeleteSerie" asp-route-id="@serie.id">Delete</a>
+
+                                        }
+                                    }
                                 </div>
                             </div>
 

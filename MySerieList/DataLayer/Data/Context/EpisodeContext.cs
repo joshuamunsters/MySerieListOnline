@@ -52,7 +52,7 @@ namespace DataLayer
 
         public void CreateRating(EpisodeRating rating)
         {
-            string query = "UPDATE Episoderating SET rating=@rating WHERE episodeid=@episodeid";
+            string query = "UPDATE Episoderating SET rating=@rating WHERE episodeid=@episodeid AND userid=@userid";
                             
                            
 
@@ -64,7 +64,7 @@ namespace DataLayer
 
                     cmd.Parameters.AddWithValue("@rating", rating.Rating);
                     cmd.Parameters.AddWithValue("@episodeid", rating.Episodeid);
-                    //cmd.Parameters.AddWithValue("@userid", rating.Userid);
+                    cmd.Parameters.AddWithValue("@userid", rating.Userid);
 
                     cmd.ExecuteNonQuery();
                 }

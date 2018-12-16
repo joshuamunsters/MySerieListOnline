@@ -28,6 +28,9 @@ namespace DataLayer
            return _serieContext.GetSerieById(id);
         }
 
-       
+        public void DeleteSerie(int id)
+        {
+            _serieContext.DeleteSerie(id);
+        }
     }
 }

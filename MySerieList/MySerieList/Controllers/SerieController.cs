@@ -44,7 +44,8 @@ namespace MySerieList.Controllers
         {
             var seriePageViewModel = new SeriePageViewModel
             {
-                SelectedSerie = serieLogic.serieRepository.GetSerieById(id)
+                SelectedSerie = serieLogic.serieRepository.GetSerieById(id),
+                Reviews = serieLogic.reviewRepository.GetReviewBySerie(id)
             };
             return View(seriePageViewModel);
         }
@@ -60,6 +61,18 @@ namespace MySerieList.Controllers
 
             return RedirectToAction("Page", "Serie", new { id = viewModel.SendReview.Serieid });
         }
+
+        public IActionResult DeleteSerie(int id)
+        {
+
+            serieLogic.DeleteSerie(id);
+
+            return RedirectToAction("List", "Serie", new { category = "All Series" });
+        }
+
+
+
+
     }
 }
 

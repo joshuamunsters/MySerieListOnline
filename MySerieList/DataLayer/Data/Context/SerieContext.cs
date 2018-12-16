@@ -113,7 +113,24 @@ namespace DataLayer
             }
         }
 
-        
+        public void DeleteSerie(int id)
+        {
+
+            string query = "DELETE FROM Serie WHERE id=@id";
+
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
 
 
 

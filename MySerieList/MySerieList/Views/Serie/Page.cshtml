@@ -31,8 +31,7 @@
                     <h1 class="my-4">@Model.SelectedSerie.name</h1>
                     <div class="list-group">
                         <a asp-controller="Episode" asp-action="Episode"  asp-route-serieid="@Model.SelectedSerie.id"  class="list-group-item">Episodes</a>
-                        <a href="#" class="list-group-item">Category 2</a>
-                        <a href="#" class="list-group-item">Category 3</a>
+                        <a asp-controller="Recommendation" asp-action="Recommendation" asp-route-serieid="@Model.SelectedSerie.id"  class="list-group-item">Recommendations</a>
                         <button type="button" class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">Open Modal</button>
 </div>
                 </div>
@@ -43,9 +42,9 @@
                     <div class="card mt-4">
                         <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
                         <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+                            <h3 class="card-title">@Model.SelectedSerie.name</h3>
+            
+                            <p class="card-text">@Model.SelectedSerie.description</p>
                             <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
                             4.0 stars
                         </div>
@@ -54,19 +53,24 @@
 
                     <div class="card card-outline-secondary my-4">
                         <div class="card-header">
-                            Product Reviews
+                            Serie Reviews
                         </div>
                         <div class="card-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                            @foreach (var review in Model.Reviews)
+                            {
+                            <p>@review.Reviewtext</p>
+                            <small class="text-muted">Posted by Anonymous</small>
                             <hr>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                            <hr>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                            <hr>
+                            }
+                           
+                            @if (User.Identity.IsAuthenticated)
+                            {
+
+
+
                             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal2">Leave a Review</a>
+
+                            }
                         </div>
                     </div>
                     <!-- /.card -->
@@ -77,6 +81,10 @@
             </div>
 
         </div>
+    @{ 
+        var identity = (System.Security.Claims.ClaimsIdentity)Context.User.Identity;
+        int id = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "id").Value);
+    }
     <form asp-action="Index" asp-controller="WatchList" method="post">
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -88,12 +96,17 @@
                         <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body">
-                        <input asp-for="@Model.WatchList.Serie.Id" value="@Model.SelectedSerie.id" readonly hidden /><br />
+
+                        <input asp-for="@Model.WatchList.Serie.SerieId" value="@Model.SelectedSerie.id" readonly hidden /><br />
                         Name: <input asp-for="@Model.WatchList.Serie.Name" value="@Model.SelectedSerie.name" readonly /><br />
                         Status: <input type="text" asp-for="@Model.WatchList.Serie.Status" /> <br>
                         Episodes Seen: <input type="number" asp-for="@Model.WatchList.Serie.EpisodesSeen" /> <br>
                         Rating: <input type="number" asp-for="@Model.WatchList.Serie.Rating" min="1" max="5" /> <br>
-                        <input type="number" asp-for="@Model.WatchList.Serie.UserId" readonly hidden /> <br>
+                        
+                            
+                            <input type="number" asp-for="@Model.WatchList.Serie.UserId" value="@id" readonly hidden /> <br>
+                        
+                        
                     </div>
                     <div class="modal-footer">
                         <input type="submit" value="Create" class="btn btn-primary" />
@@ -108,7 +121,11 @@
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
-                    <input asp-for="@Model.SendReview.Serieid" value="@Model.SelectedSerie.id" hidden />
+                    <input asp-for="@Model.SendReview.Serieid" value="@Model.SelectedSerie.id" hidden /> 
+                     
+                      
+                       <input asp-for="@Model.SendReview.Userid" value="@id" hidden />
+                       
 
                     <div class="modal-content">
                         <div class="modal-header">
@@ -126,9 +143,9 @@
 
                 </div>
             </div>
-            <!-- /.container -->
-            <!-- Footer -->
         </form>
+
+    
 
 </body>
 

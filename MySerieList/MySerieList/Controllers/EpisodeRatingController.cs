@@ -22,9 +22,9 @@ namespace MySerieList.Controllers
             vm.GetEpisodeRating = episodeLogic.GetEpisodeRating(episodeId, userid);
             vm.RatingChart = episodeLogic.GetEpisodeRatingsBySerieId(serieid, userid);
 
-           
 
-            var ratings = vm.RatingChart.Select(x => x.Rating).Distinct();
+
+            var ratings = vm.RatingChart.OrderBy(x => x.Episodeid).Select(x => x.Rating);
             var episodes = vm.RatingChart.OrderBy(x => x.Episodeid).Distinct().Select( x => x.Episodeid);
 
             ViewBag.Ratings = ratings;

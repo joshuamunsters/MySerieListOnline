@@ -26,11 +26,13 @@
     <style>
 
         #chart-container {
-            width: 400px;
+            
             height: 400px;
             border: 1px solid #ddd;
             padding: 1px;
             border-radius: 4px;
+
+           
         }
 
     </style>
@@ -39,22 +41,32 @@
 
 
 <body>
+    <div>
+        <h1>EpisodeRatingChart: Overview of all your EpisodeRatings in this serie</h1>
+        <p>Current Episode:@Model.GetEpisodeRating.Episodeid</p>
+        <p>You gave this episode a @Model.GetEpisodeRating.Rating/10</p>
+
+        
+    </div>
 
     <div id="chart-container">
         <canvas id="bar_chart"></canvas>
     </div>
+    <p>x-axis = episode</p>
+    <p>y-axis = rating</p>
+
+ 
 
 <form asp-action="CreateRating" asp-controller="EpisodeRating" asp-route-serieid="@Model.SerieId" method="post">
 
-    <h2>You gave this episode a @Model.GetEpisodeRating.Rating</h2>
-
-
+    <p style="text-align:center;">Give this episode a rating!</p>
     <input asp-for="CreateRating.Rating" class="form-control" min="1" max="10" placeholder="Give Rating" />
 
     <input asp-for="CreateRating.Userid" value="@Model.GetEpisodeRating.Userid" class="form-control" type="hidden" />
     <input asp-for="CreateRating.Episodeid" value="@Model.GetEpisodeRating.Episodeid" class="form-control" type="hidden" />
-
-    <input type="submit" value="Create" class="btn btn-primary" />
+    
+    <input type="submit" value="Rate" class="btn btn-primary" />
+   
 </form>
 
     <script>
@@ -71,8 +83,8 @@
             datasets: [{
                 label: "EpisodeRating",
                 data: ratings,
-                backgroundColor: ["rgba(242,166,54,.5)"],
-                borderColor: ["rgba(242,166,54,.5)"],
+                backgroundColor: ["rgba(242,166,54,.5)", "rgba(145,65,50,.5)", "rgba(144,60,40,.5)"],
+                borderColor: ["rgb(242,166,54)", "rgb(145,65,50)", "rgb(144,60,40)"],
                 borderWidth:1
 
             }]
@@ -80,12 +92,20 @@
         },
 
         options: {
+
             maintainAspectRatio: false,
-            scales: { xAxes: [{ ticks: { beginAtZero: true } }] },
-            legend: { display: false },
+
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+            
 
 
-        },
+        }
 
 
     });
