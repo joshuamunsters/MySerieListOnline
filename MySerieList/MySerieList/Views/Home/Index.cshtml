@@ -16,16 +16,9 @@
 </head>
 
 <body>
- 
-    @{
-//var serie1 = Model.MostPopularSeries.FirstOrDefault();
-//var serie2 = Model.MostPopularSeries.ElementAt(1);
-//var serie3 = Model.MostPopularSeries.ElementAt(2);
-//var serie4 = Model.MostPopularSeries.ElementAt(3);
+    <h1>Welcome to MySerieList</h1>     
 
-    }
-    <h1>Welcome to MySerieList</h1>
-   
+   <br />
     <!-- Navigation -->
    
     <!-- Page Content -->
@@ -35,16 +28,16 @@
         <div class="row my-4">
             <div class="col-lg-8">
                 
-                <img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">
+                <img src="~/images/testbootstrap.png" alt="http://placehold.it/900x400" height="300" width="700" >
             </div>
             <!-- /.col-lg-8 -->
         @try
         {
             var serie1 = Model.MostPopularSeries.FirstOrDefault();
             <div class="col-lg-4">
-                <h1>The most popular serie on MySerieList is: @serie1.name</h1>
-                <p>@serie1.description</p>
-                <a class="btn btn-danger navbar-btn" href="#">Go to serie page!</a>
+                <h1>The most popular serie on MySerieList is: @serie1.Name</h1>
+                <p>@serie1.Description</p>
+                <a class="btn btn-primary" asp-controller="SeriePage" asp-action="Page" asp-route-id="@serie1.Id">Go to serie page!</a>
             </div>
         }
         catch
@@ -52,7 +45,7 @@
             <p>None...Actually. An admin has managed to delete every serie from our system. If you see this you have witnessed something very rare, congratulations. Dont worry it will be fixed!</p>
         }
             <!-- /.col-md-4 -->
-        </div><br /><br />
+        </div><br /><br /><br />
         <!-- /.row -->
         <!-- Call to Action Well -->
        
@@ -66,11 +59,12 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">@serie2.name</h2>
-                        <p class="card-text">@serie2.description</p>
+                        <img src="~/images/testbootstrap.png" alt="http://placehold.it/900x400" height="200" width="348">
+                        <h2 class="card-title">@serie2.Name</h2>
+                        <p class="card-text">@serie2.Description</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-danger navbar-btn">Go to serie page!</a>
+                        <a class="btn btn-primary" asp-controller="SeriePage" asp-action="Page" asp-route-id="@serie2.Id">Go to serie page!</a>
                     </div>
                 </div>
             </div>
@@ -83,11 +77,11 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">@serie3.name</h2>
-                        <p class="card-text">@serie3.description</p>
+                        <h2 class="card-title">@serie3.Name</h2>
+                        <p class="card-text">@serie3.Description</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-danger navbar-btn">Go to serie page!</a>
+                        <a class="btn btn-primary" asp-controller="SeriePage" asp-action="Page" asp-route-id="@serie3.Id">Go to serie page!</a>
                     </div>
                 </div>
             </div>
@@ -100,11 +94,11 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">@serie4.name</h2>
-                        <p class="card-text">@serie4.description</p>
+                        <h2 class="card-title">@serie4.Name</h2>
+                        <p class="card-text">@serie4.Description</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-danger navbar-btn">Go to serie page!</a>
+                        <a class="btn btn-primary" asp-controller="SeriePage" asp-action="Page" asp-route-id="@serie4.Id">Go to serie page!</a>
                     </div>
                 </div>
             </div>

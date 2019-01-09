@@ -2,7 +2,7 @@
 using LogicLayer;
 using Microsoft.AspNetCore.Mvc;
 using Models;
-using Models.Models;
+
 using MySerieList.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace MySerieList.Controllers
             user.Password = vm.Password;
             user.Email = vm.Email;
             registerLogic.Register(user);
-            return RedirectToAction("List", "Serie");
+            return RedirectToAction("Index", "Home");
 
         }
 

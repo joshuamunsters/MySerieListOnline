@@ -31,12 +31,15 @@ namespace DataLayer
                                     Id = (int)reader["id"],
                                     Name = (string)reader["name"],
                                     Description = (string)reader["description"],
-                                    Serieid1 = (int)reader["serieid1"],
-                                    Serieid2 = (int)reader["serieid2"],
-                                    Userid = (int)reader["userid"]
-
-
-
+                                    Userid = (int)reader["userid"],
+                                    Serie1 = new Serie
+                                    {
+                                        Id = (int)reader["serieid1"],
+                                    },
+                                    Serie2 = new Serie
+                                    {
+                                        Id = (int)reader["serieid2"],
+                                    }
                                 };
                                 recommendations.Add(recommendation);
                             }
@@ -52,23 +55,30 @@ namespace DataLayer
 
         public void CreateRecommendation(Recommendation recommendation)
         {
-            string query = "INSERT INTO Recommendation([name], [description], [serieid1], [serieid2], [userid])" +
-                           "VALUES(@name, @description, @serieid1, @serieid2, @userid)";
-
-            using (var conn = new SqlConnection(ConnectionString))
+            try
             {
-                using (var cmd = new SqlCommand(query, conn))
-                {
-                    conn.Open();
-                    
-                    cmd.Parameters.AddWithValue("@name", recommendation.Name);
-                    cmd.Parameters.AddWithValue("@description", recommendation.Description);
-                    cmd.Parameters.AddWithValue("@serieid1", recommendation.Serieid1);
-                    cmd.Parameters.AddWithValue("@serieid2", recommendation.Serieid2);
-                    cmd.Parameters.AddWithValue("@userid", recommendation.Userid);
+                string query = "IF EXISTS(SELECT * FROM Recommendation WHERE name = @name AND userid=@userid) UPDATE Recommendation SET description=@description WHERE name=@name AND userid=@userid ELSE INSERT INTO Recommendation([name], [description], [serieid1], [serieid2], [userid]) VALUES(@name, @description, @serieid1, @serieid2, @userid)";
 
-                    cmd.ExecuteNonQuery();
+
+                using (var conn = new SqlConnection(ConnectionString))
+                {
+                    using (var cmd = new SqlCommand(query, conn))
+                    {
+                        conn.Open();
+
+                        cmd.Parameters.AddWithValue("@name", recommendation.Name);
+                        cmd.Parameters.AddWithValue("@description", recommendation.Description);
+                        cmd.Parameters.AddWithValue("@serieid1", recommendation.Serie1.Id);
+                        cmd.Parameters.AddWithValue("@serieid2", recommendation.Serie2.Id);
+                        cmd.Parameters.AddWithValue("@userid", recommendation.Userid);
+
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch
+            {
+
             }
         }
     }

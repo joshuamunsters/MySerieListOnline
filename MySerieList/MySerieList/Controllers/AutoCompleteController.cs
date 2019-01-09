@@ -13,16 +13,17 @@ namespace MySerieList.Controllers
     public class AutoCompleteController : Controller
     {
         SerieLogic serieLogic = new SerieLogic();
+        CategoryLogic categoryLogic = new CategoryLogic();
 
         [HttpPost]
         public JsonResult AutoComplete(string Prefix)
         {
 
 
-            List<Serie> allseries = serieLogic.serieRepository.Series().Where(x => x.name.Contains(Prefix)).Select(x => new Serie
+            List<Serie> allseries = serieLogic.Series().Where(x => x.Name.Contains(Prefix)).Select(x => new Serie
             {
-                id = x.id,
-                name = x.name
+                Id = x.Id,
+                Name = x.Name
             }).ToList();
             return Json(allseries);
         }
@@ -31,7 +32,7 @@ namespace MySerieList.Controllers
         {
 
 
-            return View("~/Views/Serie/List.cshtml", new SerieListViewModel { Series = serieLogic.ListSearch(searchbox), CurrentCategory = "All Series", Categories = serieLogic.categoryRepository.Categories() });
+            return View("~/Views/Serie/List.cshtml", new SerieListViewModel { Series = serieLogic.ListSearch(searchbox), CurrentCategory = "All Series", Categories = categoryLogic.Categories() });
         }
 
     }

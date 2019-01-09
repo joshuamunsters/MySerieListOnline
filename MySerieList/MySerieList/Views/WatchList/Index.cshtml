@@ -2,7 +2,7 @@
 
 @model WatchListViewModel
 
-<h2 style="text-align:center">My WatchList</h2><br />
+<h1 style="text-align:center">My WatchList</h1><br />
 <h1 style="text-align:left">Status:</h1>
 <div class="legendatextred">
     <p>Dropped=</p>
@@ -45,36 +45,38 @@
 </div>
 
 <br /><br /><br />
-<h1 style="float:left">Series on WatchList:</h1><br /><br /><br />
+<div class="container watchlist">
+    <h1 style="float:left">Series on WatchList:</h1><br /><br /><br />
     @{
         foreach (var serie in Model.Series)
         {
             if (serie.Status == "Completed")
             {
 
-                 <li class="list-group-item list-group-item-info">@serie.Name</li>
+                <p class="list-group-item list-group-item-info">Serie Name: "@serie.Name" Episodes Seen: "@serie.EpisodesSeen" You gave this serie a @serie.Rating/10 <a asp-controller="WatchList" asp-action="DeleteSerie" asp-route-serieid="@serie.SerieId" asp-route-userid="@serie.User.Id">Delete Serie From WatchList</a></p>
 
             }
             else if (serie.Status == "Watching")
             {
 
-                <li class="list-group-item list-group-item-success">@serie.Name</li>
+                <p class="list-group-item list-group-item-success">Serie Name: "@serie.Name" Episodes Seen: "@serie.EpisodesSeen" You gave this serie a @serie.Rating/10  <a asp-controller="WatchList" asp-action="DeleteSerie" asp-route-serieid="@serie.SerieId" asp-route-userid="@serie.User.Id">Delete Serie From WatchList</a></p>
             }
             else if (serie.Status == "Dropped")
             {
 
-                <li class="list-group-item list-group-item-danger">@serie.Name</li>
+                <p class="list-group-item list-group-item-danger">Serie Name: "@serie.Name" Episodes Seen: "@serie.EpisodesSeen" You gave this serie a @serie.Rating/10   <a asp-controller="WatchList" asp-action="DeleteSerie" asp-route-serieid="@serie.SerieId" asp-route-userid="@serie.User.Id">Delete Serie From WatchList</a></p>
             }
             else if (serie.Status == "On-Hold")
             {
 
-                <li class="list-group-item list-group-item-warning">@serie.Name</li>
+                <p class="list-group-item list-group-item-warning">Serie Name: "@serie.Name" Episodes Seen: "@serie.EpisodesSeen" You gave this serie a @serie.Rating/10  <a asp-controller="WatchList" asp-action="DeleteSerie" asp-route-serieid="@serie.SerieId" asp-route-userid="@serie.User.Id">Delete Serie From WatchList</a></p>
             }
             else if (serie.Status == "Plan to Watch")
             {
 
-                <li class="list-group-item list-group-item-dark">@serie.Name</li>
+                <p class="list-group-item list-group-item-dark">Serie Name: "@serie.Name" Episodes Seen: "@serie.EpisodesSeen" You gave this serie a @serie.Rating/10  <a asp-controller="WatchList" asp-action="DeleteSerie" asp-route-serieid="@serie.SerieId" asp-route-userid="@serie.User.Id">Delete Serie From WatchList</a></p>
             }
 
         }
     }
+</div>

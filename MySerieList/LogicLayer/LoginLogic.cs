@@ -8,7 +8,7 @@ namespace LogicLayer
 {
     public class LoginLogic
     {
-        LoginContext _logInContext = new LoginContext();
+        LoginRepository _logInContext = new LoginRepository();
 
         public bool LoginCheck(string eMail, string passWord)
         {

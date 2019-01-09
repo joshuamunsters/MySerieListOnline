@@ -19,13 +19,14 @@ namespace MySerieList.Controllers
         {
             EpisodeRatingViewModel vm = new EpisodeRatingViewModel();
             vm.SerieId = serieid;
+            vm.EpisodeId = episodeId;
             vm.GetEpisodeRating = episodeLogic.GetEpisodeRating(episodeId, userid);
             vm.RatingChart = episodeLogic.GetEpisodeRatingsBySerieId(serieid, userid);
 
 
 
-            var ratings = vm.RatingChart.OrderBy(x => x.Episodeid).Select(x => x.Rating);
-            var episodes = vm.RatingChart.OrderBy(x => x.Episodeid).Distinct().Select( x => x.Episodeid);
+            var ratings = vm.RatingChart.OrderBy(x => x.Episode.Id).Select(x => x.Rating);
+            var episodes = vm.RatingChart.OrderBy(x => x.Episode.Id).Distinct().Select( x => x.Episode.Id);
 
             ViewBag.Ratings = ratings;
             ViewBag.Episodes = episodes;
@@ -46,7 +47,7 @@ namespace MySerieList.Controllers
 
 
 
-            return RedirectToAction("EpisodeRating", "EpisodeRating", new { episodeId = vm.CreateRating.Episodeid, userid = vm.CreateRating.Userid, serieid = serieid });
+            return RedirectToAction("EpisodeRating", "EpisodeRating", new { episodeId = vm.CreateRating.Episode.Id, userid = vm.CreateRating.Userid, serieid = serieid });
         }
     }
 }

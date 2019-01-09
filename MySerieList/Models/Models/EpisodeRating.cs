@@ -10,7 +10,7 @@ namespace Models
 
         public int Rating { get; set; }
 
-        public int Episodeid { get; set; }
+        public Episode Episode { get; set; }
 
         public int Userid { get; set; }
 

@@ -11,11 +11,11 @@ namespace Models
 
         public string Status { get; set; }
 
-        public int EpisodesSeen { get; set; }
+        public string EpisodesSeen { get; set; }
 
         public int Rating { get; set; }
 
-        public int UserId { get; set; }
+        public User User { get; set; }
 
         public int SerieId { get; set; }
        

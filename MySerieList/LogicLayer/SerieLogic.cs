@@ -9,11 +9,21 @@ namespace LogicLayer
 {
     public class SerieLogic
     {
-        public SerieRepository serieRepository { get; set; } = new SerieRepository();
-        public CategoryRepository categoryRepository { get; set; } = new CategoryRepository();
-        public ReviewRepository reviewRepository { get; set; } = new ReviewRepository();
+        SerieRepository serieRepository = new SerieRepository();
+        
+       public string currentcategory = string.Empty;
 
-        public string currentcategory = string.Empty;
+        public IEnumerable<Serie> Series()
+        {
+
+            return serieRepository.Series();
+        }
+
+
+        public Serie GetSerieById(int id)
+        {
+            return serieRepository.GetSerieById(id);
+        }
         public IEnumerable<Serie> List(string category)
         {
             string _category = category;
@@ -22,7 +32,7 @@ namespace LogicLayer
 
             if (string.Equals("All Series", _category, StringComparison.OrdinalIgnoreCase))
             {
-                series = serieRepository.Series().OrderBy(n => n.id);
+                series = serieRepository.Series().OrderBy(n => n.Id);
                 //currentcategory = "All Series";
             }
             else
@@ -49,21 +59,21 @@ namespace LogicLayer
 
             if (string.IsNullOrEmpty(_searchString))
             {
-                serie = serieRepository.Series().OrderBy(p => p.id);
+                serie = serieRepository.Series().OrderBy(p => p.Id);
             }
             else
             {
-                serie = serieRepository.Series().Where(p => p.name.ToLower().Contains(_searchString.ToLower()));
+                serie = serieRepository.Series().Where(p => p.Name.ToLower().Contains(_searchString.ToLower()));
             }
             return serie;
         }
         
         public List<Serie> AutoComplete(string Prefix)
         {
-            List<Serie> allseries = serieRepository.Series().Where(x => x.name.Contains(Prefix)).Select(x => new Serie
+            List<Serie> allseries = serieRepository.Series().Where(x => x.Name.Contains(Prefix)).Select(x => new Serie
             {
-                id = x.id,
-                name = x.name
+                Id = x.Id,
+                Name = x.Name
             }).ToList();
             return allseries;
         }

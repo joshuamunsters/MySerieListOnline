@@ -1,13 +1,15 @@
-﻿using Models;
+﻿using Interfaces;
+using Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Text;
 
 namespace DataLayer
 {
-    public class LoginContext
+    public class LoginContext : ILoginContext
     {
         private string ConnectionString { get; set; } = "Server=tcp:joshhq.database.windows.net,1433;Initial Catalog=MySerieList;Persist Security Info=False;User ID=joshhq;Password=Admin1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
@@ -41,12 +43,11 @@ namespace DataLayer
         public User GetUserByEMail(string eMail)
         {
             User user = new User();
-            string query = $"SELECT id, username, password, email, roleid FROM [User] WHERE email=@email";
-
             using (SqlConnection conn = new SqlConnection(this.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand("Login", conn))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@email", eMail));
                     conn.Open();
                     foreach (DbDataRecord record in cmd.ExecuteReader())

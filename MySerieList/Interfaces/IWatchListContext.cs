@@ -9,5 +9,7 @@ namespace Interfaces
         void SendWatchListSerie(WatchListSerie watchListSerie);
 
         List<Serie> GetMostPopularSeries();
+
+        void DeleteSerieFromWatchList(int serieid, int userid);
     }
 }

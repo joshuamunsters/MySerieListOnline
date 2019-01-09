@@ -13,6 +13,7 @@ namespace MySerieList.Controllers
     public class SearchController : Controller
     {
         SerieLogic serieLogic = new SerieLogic();
+        CategoryLogic categoryLogic = new CategoryLogic();
 
         [HttpPost]
         public JsonResult AutoComplete(string Prefix)
@@ -25,7 +26,7 @@ namespace MySerieList.Controllers
         {
 
 
-            return View("~/Views/Serie/List.cshtml", new SerieListViewModel { Series = serieLogic.ListSearch(searchbox), CurrentCategory = "All Series", Categories = serieLogic.categoryRepository.Categories() });
+            return View("~/Views/Serie/List.cshtml", new SerieListViewModel { Series = serieLogic.ListSearch(searchbox), CurrentCategory = "All Series", Categories = categoryLogic.Categories() });
         }
 
     }

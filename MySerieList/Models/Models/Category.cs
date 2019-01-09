@@ -13,7 +13,6 @@ namespace Models
 
         public string description { get; set; }
 
-        public List<Serie> Series { get; set; }
 
 
     }

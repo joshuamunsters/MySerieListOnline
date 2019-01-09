@@ -13,6 +13,6 @@ namespace Models
 
         public string Description { get; set; }
 
-        public int Serieid { get; set; }
+        public Serie Serie { get; set; }
     }
 }

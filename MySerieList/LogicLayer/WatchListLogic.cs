@@ -30,6 +30,10 @@ namespace LogicLayer
             return watchListRepository.GetMostPopularSeries();
         }
 
+        public void DeleteSerieFromWatchList(int serieid, int userid)
+        {
+            watchListRepository.DeleteSerieFromWatchList(serieid, userid);
+        }
 
 
 

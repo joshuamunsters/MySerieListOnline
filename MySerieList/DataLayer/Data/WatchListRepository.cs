@@ -24,5 +24,10 @@ namespace DataLayer
         {
             return watchListContext.GetMostPopularSeries();
         }
+
+        public void DeleteSerieFromWatchList(int serieid, int userid)
+        {
+            watchListContext.DeleteSerieFromWatchList(serieid, userid);
+        }
     }
 }

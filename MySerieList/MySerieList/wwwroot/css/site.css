@@ -1,8 +1,7 @@
 ﻿body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-  
+    font-family: Geneva, Tahoma, Verdana, sans-serif;
 }
 h1 {
     margin: 0;
@@ -11,13 +10,6 @@ h1 {
     font-size: 22px;
 }
 
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
 .menu ul {
     list-style-type: none;
     margin: 0;
@@ -29,22 +21,18 @@ h1 {
     float:left;
 }
 
-.navbar li {
-    float: left;
-}
-
 li a {
         display: block;
         color: white;
         text-align: center;
         padding: 14px 16px;
-        text-decoration: none;
+       
 }
 
-li a:hover {
-            background-color: #111;
-
-}     
+    li a:hover {
+        text-decoration: none;
+        color: #337ab7;
+    }     
 
 .reviewtext{
     padding-bottom:100px;
@@ -139,6 +127,73 @@ li a:hover {
         border-top-right-radius: 0;
     }
 
+.watchlist a {
+    color:red;
+    position:fixed;
+    left:70%;
+  
+    
+}
+.watchlist a:hover {
+   color:black;
+   background-color:transparent;
+ 
+}
+.btn-primary {
+    border-color: #337ab7;
+    
+}
+    .btn-primary:hover {
+        color: black;
+        background-color: #337ab7;
+        border-color: #337ab7;
+    }
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    
+}
+
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+        .topnav a:hover {
+            background-color: #337ab7;
+            color: black;
+        }
 
 
-        
+
+.topnav-right {
+    float: right;
+}
+.recommendationtext {
+    position:absolute;
+    width:570px;
+   padding-bottom:100px;
+}
+
+.addtowatchlistname{
+    border:none;
+    font-weight:bold;
+}
+.addtowatchlistrating{
+    width:108.89px;
+}
+.giverating{
+    width:200px;
+   margin:0 auto;
+}
+.ratebutton{
+    width:200px;
+   position:absolute;
+   top:662.5px;
+   left:900px;
+}

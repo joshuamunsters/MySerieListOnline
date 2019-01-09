@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using Models;
 using Interfaces;
+using System.Data;
 
 namespace DataLayer
 {
@@ -14,13 +15,11 @@ namespace DataLayer
 
         public void Register(User user)
         {
-            string query = "INSERT INTO [User]([username], [password], [email])" +
-                           "VALUES(@username, @password, @email)";
-
             using (var conn = new SqlConnection(ConnectionString))
             {
-                using (var cmd = new SqlCommand(query, conn))
+                using (var cmd = new SqlCommand("Register", conn))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
                     conn.Open();
 
                     cmd.Parameters.AddWithValue("@username", user.Username);

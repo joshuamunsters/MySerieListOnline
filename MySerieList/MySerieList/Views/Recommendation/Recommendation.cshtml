@@ -6,6 +6,8 @@
             $('#serieid2').click(function () {
                 var serieid2 = $('#name').val();
                 document.getElementById("test").value = serieid2;
+                var seriename = $('#name option:selected').text();
+                document.getElementById("showname").value = seriename;
             });
         });
 </script>
@@ -15,15 +17,15 @@
 <div class="container">
     <h1 class="my-4">
         Recommendations
-        <small>Secondary Text</small>
     </h1>
     <div class="container">
-        
-        <button type="button" style="float:right" class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#myModal">Open Modal</button>
+        @if (User.Identity.IsAuthenticated)
+        {
+        <button type="button" style="float:right" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#myModal">Add Recommendation</button>
+        }
         <div class="card-deck">
            @{ 
-               var identity = (System.Security.Claims.ClaimsIdentity)Context.User.Identity;
-               int id = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "id").Value);
+              
                foreach (var recommendation in Model.GetRecommendations)
                {
 
@@ -36,7 +38,8 @@
                         <div class="col-md-5">
                             <h3>@recommendation.Name</h3>
                             <p>@recommendation.Description</p>
-                            <p>This Serie is recommenden by ... users</p>
+                            <a class="btn btn-primary" asp-controller="SeriePage" asp-action="Page" asp-route-id="@recommendation.Serie2.Id">Go to serie page!</a>
+                            @*<p>This Serie is recommenden by ... users</p>*@
                         </div>
                     </div>
                             <hr>
@@ -49,6 +52,10 @@
 
         </div>
     </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        var identity = (System.Security.Claims.ClaimsIdentity)Context.User.Identity;
+        int id = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "id").Value);
     <form asp-action="Recommendation" asp-controller="Recommendation" method="post">
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -57,27 +64,28 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                        <h4 class="modal-title">Add Recommendation</h4>
                     </div>
                     <div class="modal-body">
-
-                        <select id="name" asp-for="@Model.CreateRecommendation.Name">
+                        <p>Serie Name:</p>
+                        <select id="name">
+                            
                             @foreach (var seriename in Model.GetSerieNames)
                             {
-                                <option value="@seriename.id">@seriename.name </option>
-                              
-                                
+                                <option value="@seriename.Id">@seriename.Name </option>
+
+
 
                             }
 
                         </select>
-    
-                            Description: <input type="text" asp-for="@Model.CreateRecommendation.Description" /> <br>
-
+                        <br /><br />
+                        <p>Why do you recommend this serie?:</p> <br />
+                            <input type="text" asp-for="@Model.CreateRecommendation.Description" class="recommendationtext" required /> <br> <br />               
                         <input type="text" asp-for="@Model.CreateRecommendation.Userid" value="@id" readonly hidden /> <br>
-                           <input type="text" asp-for="@Model.CreateRecommendation.Serieid1" value="@Model.Serieid" readonly hidden /> <br>
-
-                            <input type="text" asp-for="@Model.CreateRecommendation.Serieid2"  id="test" readonly hidden /> <br>
+                           <input type="text" asp-for="@Model.CreateRecommendation.Serie1.Id" value="@Model.Serieid" readonly hidden /> <br>
+                        <input type="text" asp-for="@Model.CreateRecommendation.Name" id="showname"  readonly hidden /> <br>
+                            <input type="text" asp-for="@Model.CreateRecommendation.Serie2.Id"  id="test" readonly hidden /> <br>
 
                         </div>
    
@@ -89,28 +97,6 @@
             </div>
         </div>
     </form>
-    <ul class="pagination justify-content-center">
-        <li class="page-item"foreach>
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-            </a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-            </a>
-        </li>
-    </ul>
-
+    }
+    
 </div>

@@ -13,8 +13,11 @@ namespace DataLayer
 
         public void SendWatchListSerie(WatchListSerie watchListSerie)
         {
-            string query = "INSERT INTO WatchListSeries([serieid], [name], [status], [episodesseen], [rating], [userid])" +
-                           "VALUES(@serieid, @name, @status, @episodesseen, @rating, @userid)";
+            //string query = "INSERT INTO WatchListSeries([serieid], [name], [status], [episodesseen], [rating], [userid])" +
+            //               "VALUES(@serieid, @name, @status, @episodesseen, @rating, @userid)";
+
+            string query = "IF EXISTS(SELECT * FROM WatchListSeries WHERE name = @name AND userid=@userid) UPDATE WatchListSeries SET rating=@rating, status=@status, episodesseen=@episodesseen WHERE name=@name AND userid=@userid ELSE INSERT INTO WatchListSeries([serieid], [name], [status], [episodesseen], [rating], [userid]) VALUES(@serieid, @name, @status, @episodesseen, @rating, @userid)";
+
 
             using (var conn = new SqlConnection(ConnectionString))
             {
@@ -27,7 +30,7 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@status", watchListSerie.Status);
                     cmd.Parameters.AddWithValue("@episodesseen", watchListSerie.EpisodesSeen);
                     cmd.Parameters.AddWithValue("@rating", watchListSerie.Rating);
-                    cmd.Parameters.AddWithValue("@userid", watchListSerie.UserId);
+                    cmd.Parameters.AddWithValue("@userid", watchListSerie.User.Id);
                     
 
 
@@ -39,7 +42,7 @@ namespace DataLayer
         public List<WatchListSerie> GetSeries(int userid)
         {
             List<WatchListSerie> series = new List<WatchListSerie>();
-            string query = "SELECT id, name, status, episodesseen, rating, userid FROM WatchListSeries WHERE userid = @userid";
+            string query = "SELECT id, name, status, episodesseen, rating, userid, serieid FROM WatchListSeries WHERE userid = @userid";
             using (var conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
@@ -57,9 +60,14 @@ namespace DataLayer
                                     Id = (int)reader["id"],
                                     Name = (string)reader["name"],
                                     Status = (string)reader["status"],
-                                    EpisodesSeen = (int)reader["episodesseen"],
+                                    EpisodesSeen = (string)reader["episodesseen"],
                                     Rating = (int)reader["rating"],
-                                    UserId = (int)reader["userid"]
+                                    User = new User
+                                    {
+                                        Id = (int)reader["userid"]
+                                    },
+
+                                    SerieId = (int)reader["serieid"]
 
                                 };
                                 series.Add(serie);
@@ -88,10 +96,10 @@ namespace DataLayer
                         {
                             Serie serie = new Serie()
                             {
-                                id = (int)reader["serieid"],
-                                name = (string)reader["name"],
-                                description = (string)reader["description"],
-                                overallrating = (string)reader["overallrating"]
+                                Id = (int)reader["serieid"],
+                                Name = (string)reader["name"],
+                                Description = (string)reader["description"],
+                                Overallrating = (string)reader["overallrating"]
 
                             };
                             series.Add(serie);
@@ -99,6 +107,24 @@ namespace DataLayer
 
                         return series;
                     }
+                }
+            }
+        }
+
+        public void DeleteSerieFromWatchList(int serieid, int userid)
+        {
+
+            string query = "DELETE FROM WatchListSeries WHERE serieid=@serieid AND userid=@userid";
+
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    cmd.Parameters.AddWithValue("@serieid", serieid);
+                    cmd.Parameters.AddWithValue("@userid", userid);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

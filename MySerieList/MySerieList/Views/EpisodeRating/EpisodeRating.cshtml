@@ -43,7 +43,7 @@
 <body>
     <div>
         <h1>EpisodeRatingChart: Overview of all your EpisodeRatings in this serie</h1>
-        <p>Current Episode:@Model.GetEpisodeRating.Episodeid</p>
+        <p>Current Episode:@Model.EpisodeId</p>
         <p>You gave this episode a @Model.GetEpisodeRating.Rating/10</p>
 
         
@@ -56,19 +56,21 @@
     <p>y-axis = rating</p>
 
  
-
+    @{ 
+        var identity = (System.Security.Claims.ClaimsIdentity)Context.User.Identity;
+        int id = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "id").Value);
 <form asp-action="CreateRating" asp-controller="EpisodeRating" asp-route-serieid="@Model.SerieId" method="post">
 
     <p style="text-align:center;">Give this episode a rating!</p>
-    <input asp-for="CreateRating.Rating" class="form-control" min="1" max="10" placeholder="Give Rating" />
+    <input asp-for="CreateRating.Rating" class="form-control giverating" min="1" max="10" placeholder="Give Rating"  />
 
-    <input asp-for="CreateRating.Userid" value="@Model.GetEpisodeRating.Userid" class="form-control" type="hidden" />
-    <input asp-for="CreateRating.Episodeid" value="@Model.GetEpisodeRating.Episodeid" class="form-control" type="hidden" />
+    <input asp-for="CreateRating.Userid" value="@id" class="form-control" type="hidden" />
+    <input asp-for="CreateRating.Episode.Id" value="@Model.EpisodeId" class="form-control" type="hidden" />
     
-    <input type="submit" value="Rate" class="btn btn-primary" />
+    <input type="submit" value="Rate" class="btn btn-primary ratebutton" />
    
 </form>
-
+        }
     <script>
 
     var ratings = @Html.Raw(Json.Serialize(ViewBag.Ratings));

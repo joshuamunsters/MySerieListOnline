@@ -13,8 +13,8 @@ namespace DataLayer
 
         public void SendReview(Review review)
         {
-            string query = "INSERT INTO Review([reviewtext], [serieid], [userid])" +
-                           "VALUES(@reviewtext, @serieid, @userid)";
+            string query = "INSERT INTO Review([reviewtext], [serieid], [userid], [date])" +
+                           "VALUES(@reviewtext, @serieid, @userid, @date)";
 
             using (var conn = new SqlConnection(ConnectionString))
             {
@@ -24,7 +24,9 @@ namespace DataLayer
 
                     cmd.Parameters.AddWithValue("@reviewtext", review.Reviewtext);
                     cmd.Parameters.AddWithValue("@serieid", review.Serieid);
-                    cmd.Parameters.AddWithValue("@userid", review.Userid);
+                    cmd.Parameters.AddWithValue("@userid", review.User.Id);
+                    cmd.Parameters.AddWithValue("@date", DateTime.Now);
+
 
                     cmd.ExecuteNonQuery();
                 }
@@ -34,7 +36,7 @@ namespace DataLayer
         public List<Review> GetReviewBySerie(int serieid)
         {
             List<Review> reviews = new List<Review>();
-            string query = "SELECT * FROM Review  WHERE serieid = @serieid";
+            string query = "SELECT * FROM Review AS a INNER JOIN [User] AS b ON a.userid = b.id WHERE serieid = @serieid";
             using (var conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
@@ -52,10 +54,16 @@ namespace DataLayer
                                     Id = (int)reader["id"],
                                     Reviewtext = (string)reader["reviewtext"],
                                     Serieid = (int)reader["serieid"],
-                                    Userid = (int)reader["userid"]
-
+                                    Date = (DateTime)reader["date"],
+                                    User = new User
+                                    {
+                                        Id = (int)reader["userid"],
+                                        Username = (string)reader["username"]
+                                    }
+                                    
 
                                 };
+                               
                                 reviews.Add(review);
                             }
                         }

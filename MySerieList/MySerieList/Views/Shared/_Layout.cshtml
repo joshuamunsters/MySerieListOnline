@@ -12,7 +12,40 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="navbar">
+    <div class="topnav">
+@if (User.Identity.IsAuthenticated)
+{
+    var identity = (System.Security.Claims.ClaimsIdentity)Context.User.Identity;
+    int roleid = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "roleid").Value);
+    int userid = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "id").Value);
+    string email = (identity.Claims.FirstOrDefault(c => c.Type == "email").Value);
+    if (roleid == 1 || roleid == 2)
+    {
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <a asp-controller="Serie" asp-action="List" asp-route-category="All Series">Series</a>
+        <a asp-controller="WatchList" asp-action="Index" asp-route-userid="@userid">Watchlist</a>
+        <div class="topnav-right">
+            <a asp-controller="Profile" asp-action="Profile" asp-route-email="@email">@User.Identity.Name</a>
+            <a asp-controller="Logout" asp-action="Index">Logout</a>
+        </div>
+    }
+
+}
+else
+{
+    <a asp-controller="Home" asp-action="Index">Home</a>
+        <a asp-controller="Serie" asp-action="List">Series</a>
+        <a asp-controller="Login" asp-action="Login">Login</a>
+        <a asp-controller="Register" asp-action="Register">Register</a>
+
+
+}
+    </div>
+    
+
+
+
+    @*<div class="navbar">
         @if (User.Identity.IsAuthenticated)
         {
             var identity = (System.Security.Claims.ClaimsIdentity)Context.User.Identity;
@@ -26,9 +59,9 @@
                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-controller="Serie" asp-action="List" asp-route-category="All Series">Series</a></li>
                     <li><a asp-controller="WatchList" asp-action="Index" asp-route-userid="@userid">Watchlist</a></li>
-                    <li><a asp-controller="Profile" asp-action="Profile" asp-route-email="@email">Profile</a></li>
-                    <li style="float:right"><a asp-controller="Logout" asp-action="Index">Logout</a></li>
-                    <li style="float:right"> <a *@ class="navbar-btn btn btn-default">@User.Identity.Name</a></li>
+                    <li class="profile"><a asp-controller="Profile" asp-action="Profile" asp-route-email="@email" class="navbar-btn btn btn-primary">@User.Identity.Name</a></li>
+                    <li class="logout"><a asp-controller="Logout" asp-action="Index">Logout</a></li>
+
                     
                 </ul>
 
@@ -48,7 +81,8 @@
 
         }
 
-        </div>
+        </div>*@
+    <br />
         <div>
             @RenderBody()
         </div>

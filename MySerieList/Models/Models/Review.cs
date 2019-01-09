@@ -12,7 +12,10 @@ namespace Models
 
         public int Serieid { get; set; }
 
-        public int Userid { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public User User { get; set; }
 
     }
 }

@@ -31,10 +31,10 @@ namespace DataLayer
                             {
                                 Serie serie = new Serie
                                 {
-                                    id = (int)reader["id"],
-                                    name = (string)reader["name"],
-                                    description = (string)reader["description"],
-                                    overallrating = (string)reader["overallrating"]
+                                    Id = (int)reader["id"],
+                                    Name = (string)reader["name"],
+                                    Description = (string)reader["description"],
+                                    Overallrating = (string)reader["overallrating"]
                                     
                                 };
                                series.Add(serie);
@@ -50,13 +50,13 @@ namespace DataLayer
         public List<Serie> GetAllSeriesByCategory(int categoryid)
         {
             List<Serie> series = new List<Serie>();
-            //string query = "SELECT id, name, description, overallrating FROM Serie WHERE categoryid = @categoryid";
+            string query = "SELECT id, name, description, overallrating, categoryid FROM Serie WHERE categoryid = @categoryid";
+
             using (var conn = new SqlConnection(ConnectionString))
             {             
                 conn.Open();
-                using (var cmd = new SqlCommand("GetSeriesByCategory", conn))
+                using (var cmd = new SqlCommand(query, conn))
                 {              
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@categoryid", categoryid));
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -66,10 +66,14 @@ namespace DataLayer
                             {
                                 Serie serie = new Serie
                                 {
-                                    id = (int)reader["id"],
-                                    name = (string)reader["name"],
-                                    description = (string)reader["description"],
-                                    overallrating = (string)reader["overallrating"]
+                                    Id = (int)reader["id"],
+                                    Name = (string)reader["name"],
+                                    Description = (string)reader["description"],
+                                    Overallrating = (string)reader["overallrating"],
+                                    Category = new Category
+                                    {
+                                        id = (int)reader["categoryid"],
+                                    }
 
                                 };
                                 series.Add(serie);
@@ -99,10 +103,10 @@ namespace DataLayer
                         {
                             serie = new Serie()
                             {
-                                id = id,
-                                name = (string)reader["name"],
-                                description = (string)reader["description"],
-                                overallrating = (string)reader["overallrating"]
+                                Id = id,
+                                Name = (string)reader["name"],
+                                Description = (string)reader["description"],
+                                Overallrating = (string)reader["overallrating"]
                             
                             };
                         }

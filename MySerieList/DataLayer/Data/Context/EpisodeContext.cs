@@ -31,7 +31,10 @@ namespace DataLayer
                                     Id = (int)reader["id"],
                                     Name = (string)reader["name"],
                                     Description = (string)reader["description"],
-                                    Serieid = (int)reader["serieid"]
+                                    Serie = new Serie
+                                    {
+                                        Id = (int)reader["serieid"]
+                                    }
 
 
                                 };
@@ -46,15 +49,14 @@ namespace DataLayer
 
             }
         }
-        string query = "INSERT INTO Episoderating([rating], [episodeid], [userid])" +
-                          "VALUES(@rating, @episodeid, @userid)";
+       
 
 
         public void CreateRating(EpisodeRating rating)
         {
-            string query = "UPDATE Episoderating SET rating=@rating WHERE episodeid=@episodeid AND userid=@userid";
-                            
-                           
+            //string query = "UPDATE Episoderating SET rating=@rating WHERE episodeid=@episodeid AND userid=@userid";
+            string query = "IF EXISTS(SELECT * FROM Episoderating WHERE episodeid = @episodeid AND userid=@userid) UPDATE Episoderating SET rating=@rating WHERE episodeid=@episodeid AND userid=@userid ELSE INSERT INTO Episoderating([rating], [episodeid], [userid]) VALUES(@rating, @episodeid, @userid)";
+
 
             using (var conn = new SqlConnection(ConnectionString))
             {
@@ -63,7 +65,7 @@ namespace DataLayer
                     conn.Open();
 
                     cmd.Parameters.AddWithValue("@rating", rating.Rating);
-                    cmd.Parameters.AddWithValue("@episodeid", rating.Episodeid);
+                    cmd.Parameters.AddWithValue("@episodeid", rating.Episode.Id);
                     cmd.Parameters.AddWithValue("@userid", rating.Userid);
 
                     cmd.ExecuteNonQuery();
@@ -90,9 +92,12 @@ namespace DataLayer
                             rating = new EpisodeRating
                             {
                                 Id = (int)reader["id"],
-                                Rating = (int)reader["rating"],
-                                Episodeid = (int)reader["episodeid"],
+                                Rating = (int)reader["rating"],                               
                                 Userid = (int)reader["userid"],
+                                Episode = new Episode
+                                {
+                                    Id = (int)reader["episodeid"]
+                                }
 
                             };
                         }
@@ -124,8 +129,11 @@ namespace DataLayer
                                 {
                                     Id = (int)reader["id"],
                                     Rating = (int)reader["rating"],
-                                    Episodeid = (int)reader["episodeid"],
-                                    Userid = (int)reader["userid"]
+                                    Userid = (int)reader["userid"],
+                                    Episode = new Episode
+                                    {
+                                        Id = (int)reader["episodeid"]
+                                    }
 
 
                                 };

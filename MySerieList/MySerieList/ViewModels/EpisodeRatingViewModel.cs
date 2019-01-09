@@ -10,6 +10,7 @@ namespace MySerieList.ViewModels
     {
    
         public int SerieId { get; set; }
+        public int EpisodeId { get; set; }
         public EpisodeRating CreateRating { get; set; }
 
         public EpisodeRating GetEpisodeRating { get; set; } 

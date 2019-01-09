@@ -19,7 +19,7 @@ namespace MySerieList.Controllers
         {
             RecommendationViewModel vm = new RecommendationViewModel();
             vm.GetRecommendations = recommendationLogic.GetRecommendatinsBySerieId(serieid);
-            vm.GetSerieNames = serieLogic.serieRepository.Series();
+            vm.GetSerieNames = serieLogic.Series();
             vm.Serieid = serieid;
             return View(vm);
         }
@@ -29,7 +29,7 @@ namespace MySerieList.Controllers
             recommendationLogic.CreateRecommendation(vm.CreateRecommendation);
 
 
-            return RedirectToAction("Recommendation", "Recommendation", new { serieid = vm.CreateRecommendation.Serieid1 });
+            return RedirectToAction("Recommendation", "Recommendation", new { serieid = vm.CreateRecommendation.Serie1.Id });
         }
 
 

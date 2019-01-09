@@ -7,19 +7,17 @@ namespace Models
 {
     public class Serie
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string description { get; set; }
+        public string Description { get; set; }
 
-        public string overallrating { get; set; }
+        public string Overallrating { get; set; }
 
-        public string thumbnail { get; set; }
+        public string Thumbnail { get; set; }
 
-        public int categoryid { get; set; }
-
-        public virtual Category Category { get; set; }
+        public Category Category { get; set; }
 
 
     }

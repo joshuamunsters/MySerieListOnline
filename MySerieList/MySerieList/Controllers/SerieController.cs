@@ -15,6 +15,7 @@ namespace MySerieList.Controllers
     public class SerieController : Controller
     {
         SerieLogic serieLogic = new SerieLogic();
+        CategoryLogic categoryLogic = new CategoryLogic();
 
         public ViewResult List(string category)
         {
@@ -30,7 +31,7 @@ namespace MySerieList.Controllers
             {
                 Series = serieLogic.List(category),
                 CurrentCategory = serieLogic.currentcategory,
-                Categories = serieLogic.categoryRepository.Categories()
+                Categories = categoryLogic.Categories()
 
 
             };
@@ -40,27 +41,6 @@ namespace MySerieList.Controllers
 
         }
 
-        public ViewResult Page(int id)
-        {
-            var seriePageViewModel = new SeriePageViewModel
-            {
-                SelectedSerie = serieLogic.serieRepository.GetSerieById(id),
-                Reviews = serieLogic.reviewRepository.GetReviewBySerie(id)
-            };
-            return View(seriePageViewModel);
-        }
-
-        [HttpPost, ActionName("Page")]
-        public IActionResult PageReview(SeriePageViewModel viewModel)
-        {
-            //viewModel.SendReview.Serieid = viewModel.SelectedSerie.id;
-
-            //mockcode : serieRepo.NewReview(viewModel.SendReview);
-            serieLogic.reviewRepository.SendReview(viewModel.SendReview);
-
-
-            return RedirectToAction("Page", "Serie", new { id = viewModel.SendReview.Serieid });
-        }
 
         public IActionResult DeleteSerie(int id)
         {
